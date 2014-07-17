@@ -20,9 +20,19 @@ public class SimpleTestCase {
     public void init(String homePage, String browserType) {
 
         //TODO : add log system here
-
-        //Read Properties file
         //Launch browser
+        launchBrowser(browserType);
+        //Direct to HomePage
+        driver.get(homePage);
+    }
+
+    @AfterClass
+    public void stop() {
+        //Close Browser
+        driver.quit();
+    }
+
+    private void launchBrowser(String browserType){
         switch(browserType){
             case "IE" :
                 System.setProperty("webdriver.ie.driver", "BrowserDriver/IEDriverServer.exe");
@@ -33,13 +43,5 @@ public class SimpleTestCase {
                 driver = new ChromeDriver();
                 break;
         }
-        //Direct to HomePage
-        driver.get(homePage);
-    }
-
-    @AfterClass
-    public void stop() {
-        //Close Browser
-        driver.quit();
     }
 }
