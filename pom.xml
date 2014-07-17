@@ -55,7 +55,7 @@
                 <version>2.17</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>test_configuration\${browser}.xml</suiteXmlFile>
+                        <suiteXmlFile>TestConfiguration\${browser}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

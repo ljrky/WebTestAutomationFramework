@@ -7,6 +7,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
+import java.util.ResourceBundle;
+
 /**
  * Created by kerua on 7/9/2014.
  */
@@ -15,8 +17,12 @@ public class SimpleTestCase {
 
     @Parameters({ "homePage", "browserType" })
     @BeforeClass()
-    public void beforeClass(String homePage, String browserType) {
+    public void init(String homePage, String browserType) {
 
+        //TODO : add log system here
+
+        //Read Properties file
+        //Launch browser
         switch(browserType){
             case "IE" :
                 System.setProperty("webdriver.ie.driver", "BrowserDriver/IEDriverServer.exe");
@@ -27,11 +33,13 @@ public class SimpleTestCase {
                 driver = new ChromeDriver();
                 break;
         }
+        //Direct to HomePage
         driver.get(homePage);
     }
 
     @AfterClass
-    public void afterClass() {
+    public void stop() {
+        //Close Browser
         driver.quit();
     }
 }

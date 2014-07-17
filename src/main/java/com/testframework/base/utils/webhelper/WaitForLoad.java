@@ -1,4 +1,4 @@
-package com.testframework.base.utils.helper;
+package com.testframework.base.utils.webhelper;
 
 import org.openqa.selenium.WebElement;
 
