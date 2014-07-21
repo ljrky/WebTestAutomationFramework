@@ -13,6 +13,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <browser></browser>
+    <environment></environment>
   </properties>
 
   <dependencies>
@@ -55,7 +56,7 @@
                 <version>2.17</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>TestConfiguration\${browser}.xml</suiteXmlFile>
+                        <suiteXmlFile>TestConfiguration\${environment}\${browser}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
