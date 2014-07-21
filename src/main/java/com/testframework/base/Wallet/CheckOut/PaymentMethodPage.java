@@ -50,6 +50,9 @@ public class PaymentMethodPage {
     @FindBy(how = How.CLASS_NAME, using = "skypePaymentFrame")
     public static WebElement iFrame;
 
+    @FindBy(how = How.LINK_TEXT, using = "Use a new payment method")
+    public static WebElement UseNewPaymentMethod;
+
     public PaymentMethodPage(WebDriver driver) {
         this.driver = driver;
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver,
@@ -119,6 +122,9 @@ public class PaymentMethodPage {
 
 
     public void fillCreditCardForm(HashMap<String, String> CardInformation) {
+        if(UseNewPaymentMethod.isDisplayed()){
+            UseNewPaymentMethod.click();
+        }
         clickTOS();
         selectIframe();
         enterCardNumber(CardInformation.get("cardNumber"));
