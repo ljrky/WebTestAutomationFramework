@@ -2,7 +2,7 @@
 <suite name="Suite" parallel="false">
     <test name="Test">
 		<parameter name="browserType" value="Chrome" />
-        <parameter name="homePage" value="http://qasecure.skype.net/" />
+        <parameter name="homePage" value="https://qasecure.skype.net" />
         <!--<parameter name="skypeCreditPage" value="https://qasecure.skype.net/wallet/buy/credit" />-->
         <!--<parameter name="checkoutPage" value="https://qasecure.skype.net/wallet/checkout" />-->
         <!--<parameter name="cardNumber" value="4013430694071065" />-->

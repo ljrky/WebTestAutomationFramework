@@ -41,25 +41,23 @@ public class SignIn {
 
     public void clickSignInWithSkypeAccount() {
         WaitForLoad.WaitForPageToLoad(FooterOfThePage);
-        if(driver.findElement(By.className("isNotAuthenticated")).isDisplayed()){
-            WaitForLoad.WaitForElement(SignInWithSkypeAccount);
+        WaitForLoad.WaitForElement(SignInWithSkypeAccount);
+        if(SignInWithSkypeAccount.isDisplayed()){
             SignInWithSkypeAccount.click();
         }
     }
 
-
-    public void SingInWithSkypeAccount(String testData_UserName, String testData_SkypeCreditPage) {
+    public void SignInWithSkypeAccount(String testData_UserName) {
         WaitForLoad.WaitForElement(Username);
         Username.click();
         Username.sendKeys(testData_UserName);
         Password.click();
         Password.sendKeys(testData_UserName);
         SignIn.click();
+    }
 
-        //verify sign success
-        WaitForLoad.WaitForPageToLoad(FooterOfThePage);
-        if(driver.findElement(By.className("isAuthenticated")).isDisplayed()){
-            driver.get(testData_SkypeCreditPage);
-        }
+    public void Login(String testData_UserName){
+        clickSignInWithSkypeAccount();
+        SignInWithSkypeAccount(testData_UserName);
     }
 }

@@ -2,7 +2,7 @@
 <suite name="Suite" parallel="false">
     <test name="Test">
 		<parameter name="browserType" value="IE" />
-        <!--<parameter name="homePage" value="http://qasecure.skype.net/" />-->
+        <parameter name="homePage" value="https://qasecure.skype.net" />
 		<!--<parameter name="skypeCreditPage" value="https://qasecure.skype.net/wallet/buy/credit" />-->
 		<!--<parameter name="checkoutPage" value="https://qasecure.skype.net/wallet/checkout" />-->
         <!--<parameter name="cardNumber" value="4013430694071065" />-->
@@ -11,11 +11,8 @@
 		<!--<parameter name="ExpiryYear" value="2018" />-->
         <!--<parameter name="cardSecurityCode" value="555" />-->
 		<!--<parameter name="skypeName" value="manual_53b1560a6e2a7" />-->
-        <parameter name="email" value="ruan.keyu@gmail.com" />
-        <parameter name="password" value="" />
-        <parameter name="homePage" value="https://podio.com/login" />
         <classes>
-            <class name="com.testframework.test.SampleSite.HomePageTest" />
+            <class name="com.testframework.test.CheckOut.CheckOutTest" />
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
