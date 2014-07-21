@@ -1,6 +1,11 @@
 package com.testframework.base.utils.webhelper;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by kerua on 7/9/2014.
@@ -47,5 +52,12 @@ public class WaitForLoad {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void WaitForSuccess(WebDriver driver){
+        new WebDriverWait(driver, 25).until(
+//                ExpectedConditions.presenceOfElementLocated(By.className("successful"))
+                ExpectedConditions.visibilityOfElementLocated(By.className("successful"))
+        );
     }
 }

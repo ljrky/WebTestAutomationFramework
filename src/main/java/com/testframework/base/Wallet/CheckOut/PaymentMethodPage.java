@@ -1,5 +1,7 @@
-package com.testframework.base.CheckOut;
+package com.testframework.base.Wallet.CheckOut;
 
+import com.testframework.base.utils.webhelper.WaitForLoad;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,8 +10,15 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+
+import static com.testframework.base.utils.webhelper.WaitForLoad.WaitForElement;
 
 /**
  * Created by kerua on 7/21/2014.
@@ -38,7 +47,7 @@ public class PaymentMethodPage {
     @FindBy(how = How.ID, using = "cancelFlow")
     public static WebElement cancel;
 
-    @FindBy(how = How.TAG_NAME, using = "iframe")
+    @FindBy(how = How.CLASS_NAME, using = "skypePaymentFrame")
     public static WebElement iFrame;
 
     public PaymentMethodPage(WebDriver driver) {
@@ -59,7 +68,9 @@ public class PaymentMethodPage {
     }
 
     public void selectExpiryMonth(String testData_ExpiryMonth) {
-        expiryDateMonth.sendKeys(testData_ExpiryMonth);
+//        expiryDateMonth.sendKeys(testData_ExpiryMonth);
+        Select realSelect = new Select(expiryDateMonth);
+        realSelect.selectByValue(testData_ExpiryMonth);
     }
 
 //    public void selectExpiryMonthInIOS(String testData_ExpiryMonth) {
@@ -68,7 +79,9 @@ public class PaymentMethodPage {
 //    }
 
     public void selectExpiryYear(String testData_ExpiryYear) {
-        expiryDateYear.sendKeys(testData_ExpiryYear);
+//        expiryDateYear.sendKeys(testData_ExpiryYear);
+        Select realSelect = new Select(expiryDateYear);
+        realSelect.selectByValue(testData_ExpiryYear);
     }
 
     public void enterCardSecurityCode(String testData_CardSecurityCode) {
@@ -108,10 +121,10 @@ public class PaymentMethodPage {
     public void fillCreditCardForm(HashMap<String, String> CardInformation) {
         clickTOS();
         selectIframe();
-	    selectExpiryMonth(CardInformation.get("ExpiryMonth"));
-	    selectExpiryYear(CardInformation.get("ExpiryYear"));
         enterCardNumber(CardInformation.get("cardNumber"));
         enterNameOnCard(CardInformation.get("nameOnCard"));
+        selectExpiryMonth(CardInformation.get("ExpiryMonth"));
+        selectExpiryYear(CardInformation.get("ExpiryYear"));
         enterCardSecurityCode(CardInformation.get("cardSecurityCode"));
         nameOnCard.click();
         deselectIframe();

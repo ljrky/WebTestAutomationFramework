@@ -1,9 +1,9 @@
-package com.testframework.test.CheckOut;
+package com.testframework.test.Wallet.CheckOut;
 
-import com.testframework.base.CheckOut.CheckoutPage;
-import com.testframework.base.CheckOut.PaymentMethodPage;
-import com.testframework.base.CheckOut.SignIn;
-import com.testframework.base.CheckOut.SkypeCreditPage;
+import com.testframework.base.Wallet.CheckOut.CheckoutPage;
+import com.testframework.base.Wallet.CheckOut.PaymentMethodPage;
+import com.testframework.base.Wallet.CheckOut.SignIn;
+import com.testframework.base.Wallet.CheckOut.SkypeCreditPage;
 import com.testframework.base.BaseTestCase.SimpleTestCase;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -19,21 +19,23 @@ import static com.testframework.base.utils.testDataHelper.GetResourceBundle.getR
  */
 public class CheckOutTest extends SimpleTestCase{
 
-    public String skypeName, cardNumber, nameOnCard, ExpiryMonth, ExpiryYear, cardSecurityCode;
+    public String skypeName, cardNumber, nameOnCard, ExpiryMonth, ExpiryYear, cardSecurityCode, buyCreditURL;
 
     @BeforeClass
     public void initVariables(){
-        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.CheckOut.CheckOutTest");
+        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.CheckOut.CheckOutTest");
         skypeName = resourceBundle.getString("skypeName");
         cardNumber = resourceBundle.getString("cardNumber");
         nameOnCard = resourceBundle.getString("nameOnCard");
         ExpiryMonth = resourceBundle.getString("ExpiryMonth");
         ExpiryYear = resourceBundle.getString("ExpiryYear");
         cardSecurityCode = resourceBundle.getString("cardSecurityCode");
+        buyCreditURL = resourceBundle.getString("buyCreditURL");
     }
 
     @BeforeMethod
     public void beforeMethod(){
+        driver.get(HomePage + buyCreditURL);
         SkypeCreditPage skypecreditPage = new SkypeCreditPage(driver);
         skypecreditPage.clickContinue();
         //Login Function

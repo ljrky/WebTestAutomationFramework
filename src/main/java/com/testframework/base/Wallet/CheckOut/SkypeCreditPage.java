@@ -1,4 +1,4 @@
-package com.testframework.base.CheckOut;
+package com.testframework.base.Wallet.CheckOut;
 
 import com.testframework.base.utils.webhelper.WaitForLoad;
 import org.openqa.selenium.WebDriver;

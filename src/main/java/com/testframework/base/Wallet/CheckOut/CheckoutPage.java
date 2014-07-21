@@ -1,4 +1,4 @@
-package com.testframework.base.CheckOut;
+package com.testframework.base.Wallet.CheckOut;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

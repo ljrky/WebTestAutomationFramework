@@ -2,7 +2,7 @@
 <suite name="Suite" parallel="false">
     <test name="Test">
 		<parameter name="browserType" value="Chrome" />
-        <parameter name="homePage" value="https://qasecure.skype.net" />
+        <parameter name="homePage" value="https://presecure.skype.net" />
         <!--<parameter name="skypeCreditPage" value="https://qasecure.skype.net/wallet/buy/credit" />-->
         <!--<parameter name="checkoutPage" value="https://qasecure.skype.net/wallet/checkout" />-->
         <!--<parameter name="cardNumber" value="4013430694071065" />-->
@@ -12,7 +12,8 @@
         <!--<parameter name="cardSecurityCode" value="555" />-->
         <!--<parameter name="skypeName" value="manual_53b1560a6e2a7" />-->
         <classes>
-            <class name="com.testframework.test.CheckOut.CheckOutTest" />
+            <class name="com.testframework.test.Wallet.Premium.PremiumTest" />
+            <!--<class name="com.testframework.test.Wallet.CheckOut.CheckOutTest" />-->
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
