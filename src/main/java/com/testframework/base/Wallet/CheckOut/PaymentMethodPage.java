@@ -1,7 +1,5 @@
 package com.testframework.base.Wallet.CheckOut;
 
-import com.testframework.base.utils.webhelper.WaitForLoad;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,15 +8,11 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
-import static com.testframework.base.utils.webhelper.WaitForLoad.WaitForElement;
+import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForElement;
 
 /**
  * Created by kerua on 7/21/2014.
@@ -50,9 +44,6 @@ public class PaymentMethodPage {
     @FindBy(how = How.CLASS_NAME, using = "skypePaymentFrame")
     public static WebElement iFrame;
 
-    @FindBy(how = How.LINK_TEXT, using = "Use a new payment method")
-    public static WebElement UseNewPaymentMethod;
-
     public PaymentMethodPage(WebDriver driver) {
         this.driver = driver;
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver,
@@ -82,7 +73,6 @@ public class PaymentMethodPage {
 //    }
 
     public void selectExpiryYear(String testData_ExpiryYear) {
-//        expiryDateYear.sendKeys(testData_ExpiryYear);
         Select realSelect = new Select(expiryDateYear);
         realSelect.selectByValue(testData_ExpiryYear);
     }
@@ -122,9 +112,6 @@ public class PaymentMethodPage {
 
 
     public void fillCreditCardForm(HashMap<String, String> CardInformation) {
-        if(UseNewPaymentMethod.isDisplayed()){
-            UseNewPaymentMethod.click();
-        }
         clickTOS();
         selectIframe();
         enterCardNumber(CardInformation.get("cardNumber"));

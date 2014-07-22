@@ -1,5 +1,6 @@
 package com.testframework.base.BaseTestCase;
 
+import com.testframework.base.Wallet.CheckOut.SignIn;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -13,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.testframework.base.utils.testDataHelper.GetResourceBundle.getResourceBundle;
+import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getResourceBundle;
 
 /**
  * Created by kerua on 7/9/2014.
@@ -34,7 +35,7 @@ public class SimpleTestCase {
         //TODO : add log system here
         //Launch browser
         launchBrowser(BrowserType);
-        //Direct to LogoutPage
+        //Direct to Logout Page
         driver.get(HomePage + logoutURL);
     }
 

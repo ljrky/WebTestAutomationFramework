@@ -1,6 +1,5 @@
 package com.testframework.base.Wallet.CheckOut;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
-import static com.testframework.base.utils.webhelper.WaitForLoad.WaitForSuccess;
+import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForSuccess;
 
 /**
  * Created by kerua on 7/21/2014.

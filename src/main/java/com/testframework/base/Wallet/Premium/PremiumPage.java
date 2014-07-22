@@ -1,6 +1,6 @@
 package com.testframework.base.Wallet.Premium;
 
-import com.testframework.base.utils.webhelper.WaitForLoad;
+import com.testframework.base.Utils.WebDriverhelper.WaitForLoad;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,7 +24,7 @@ public class PremiumPage {
         PageFactory.initElements(finder, this);
     }
 
-    public void clickUnlimitedButton() {
+    public void ChooseUnlimitedPackage() {
         WaitForLoad.WaitForElement(UnlimitedButton);
         UnlimitedButton.click();
     }

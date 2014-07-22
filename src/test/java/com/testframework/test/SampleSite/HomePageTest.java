@@ -2,14 +2,14 @@ package com.testframework.test.SampleSite;
 
 import com.testframework.base.SampleSite.HomePage;
 import com.testframework.base.BaseTestCase.SimpleTestCase;
-import com.testframework.base.utils.webhelper.WaitForLoad;
+import com.testframework.base.Utils.WebDriverhelper.WaitForLoad;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.ResourceBundle;
 
-import static com.testframework.base.utils.testDataHelper.GetResourceBundle.getResourceBundle;
+import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getResourceBundle;
 
 /**
  * Created by kerua on 7/9/2014.

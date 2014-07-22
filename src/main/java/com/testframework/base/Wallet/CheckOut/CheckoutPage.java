@@ -21,6 +21,11 @@ public class CheckoutPage {
     @FindBy(how = How.ID, using = "cancelFlow")
     public static WebElement CancelButton;
 
+    @FindBy(how = How.LINK_TEXT, using = "Use a new payment method")
+    public static WebElement UseNewPaymentMethod;
+
+    @FindBy(how = How.LINK_TEXT, using = "Pay now")
+    public static WebElement PayNow;
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
@@ -46,4 +51,13 @@ public class CheckoutPage {
             }
         }
     }
+
+    public void UseNewPaymentMethod() {
+        UseNewPaymentMethod.click();
+    }
+
+    public void UseStoredPaymentMethod() {
+        PayNow.click();
+    }
+
 }

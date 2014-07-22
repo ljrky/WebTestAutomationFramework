@@ -1,10 +1,8 @@
 package com.testframework.test.Wallet.CheckOut;
 
-import com.testframework.base.Wallet.CheckOut.CheckoutPage;
-import com.testframework.base.Wallet.CheckOut.PaymentMethodPage;
-import com.testframework.base.Wallet.CheckOut.SignIn;
-import com.testframework.base.Wallet.CheckOut.SkypeCreditPage;
+import com.testframework.base.Wallet.CheckOut.*;
 import com.testframework.base.BaseTestCase.SimpleTestCase;
+import com.testframework.base.Wallet.SkypeHomePage.MyAccountPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,14 +10,16 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-import static com.testframework.base.utils.testDataHelper.GetResourceBundle.getResourceBundle;
+import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getResourceBundle;
+import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForSeconds;
 
 /**
  * Created by kerua on 7/17/2014.
  */
 public class CheckOutTest extends SimpleTestCase{
 
-    public String skypeName, cardNumber, nameOnCard, ExpiryMonth, ExpiryYear, cardSecurityCode, buyCreditURL;
+    private String skypeName, cardNumber, nameOnCard, ExpiryMonth, ExpiryYear, cardSecurityCode, buyCreditURL;
+    private HashMap<String, String> CardInformation;
 
     @BeforeClass
     public void initVariables(){
@@ -31,13 +31,23 @@ public class CheckOutTest extends SimpleTestCase{
         ExpiryYear = resourceBundle.getString("ExpiryYear");
         cardSecurityCode = resourceBundle.getString("cardSecurityCode");
         buyCreditURL = resourceBundle.getString("buyCreditURL");
+        CardInformation = new HashMap<String, String>(){
+            {
+                put("cardNumber", cardNumber);
+                put("nameOnCard", nameOnCard);
+                put("ExpiryMonth", ExpiryMonth);
+                put("ExpiryYear", ExpiryYear);
+                put("cardSecurityCode", cardSecurityCode);
+            }
+        };
     }
 
     @BeforeMethod
     public void beforeMethod(){
+        //Redirect
         driver.get(HomePage + buyCreditURL);
-        SkypeCreditPage skypecreditPage = new SkypeCreditPage(driver);
-        skypecreditPage.clickContinue();
+        BuySkypeCreditPage skypecreditPage = new BuySkypeCreditPage(driver);
+        skypecreditPage.ContinueWithDefaultProduct();
         //Login Function
         SignIn signIn = new SignIn(driver);
         signIn.Login(skypeName);
@@ -47,20 +57,14 @@ public class CheckOutTest extends SimpleTestCase{
     public void HomePage() {
 
         CheckoutPage checkoutPage = new CheckoutPage(driver);
-        checkoutPage.clickTOS();
+        checkoutPage.UseNewPaymentMethod();
 
     	PaymentMethodPage paymentMethodPage = new PaymentMethodPage(driver);
 
-        HashMap<String, String> CardInformation = new HashMap<String, String>(){
-            {
-                put("cardNumber", cardNumber);
-                put("nameOnCard", nameOnCard);
-                put("ExpiryMonth", ExpiryMonth);
-                put("ExpiryYear", ExpiryYear);
-                put("cardSecurityCode", cardSecurityCode);
-            }
-        };
 		paymentMethodPage.fillCreditCardForm(CardInformation);
 	    paymentMethodPage.clickPayNow();
+
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+        orderConfirmationPage.verifyOrderPlaced();
     }
 }

@@ -1,6 +1,6 @@
 package com.testframework.base.Wallet.CheckOut;
 
-import com.testframework.base.utils.webhelper.WaitForLoad;
+import com.testframework.base.Utils.WebDriverhelper.WaitForLoad;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +12,7 @@ import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 /**
  * Created by kerua on 7/17/2014.
  */
-public class SkypeCreditPage {
+public class BuySkypeCreditPage {
     private WebDriver driver;
 
     @FindBy(how = How.ID, using = "productSelection")
@@ -24,15 +24,18 @@ public class SkypeCreditPage {
     @FindBy(how = How.CLASS_NAME, using = "bottom")
     public static WebElement FooterOfThePage;
 
-    public SkypeCreditPage(WebDriver driver) {
+    public BuySkypeCreditPage(WebDriver driver) {
         this.driver = driver;
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver,120);
         PageFactory.initElements(finder, this);
     }
 
     public void clickContinue() {
-        WaitForLoad.WaitForPageToLoad(FooterOfThePage);
         WaitForLoad.WaitForElement(Continue);
         Continue.click();
+    }
+
+    public void ContinueWithDefaultProduct() {
+        clickContinue();
     }
 }

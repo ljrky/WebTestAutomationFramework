@@ -10,13 +10,14 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-import static com.testframework.base.utils.testDataHelper.GetResourceBundle.getResourceBundle;
+import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getResourceBundle;
 
 /**
  * Created by kerua on 7/21/2014.
  */
 public class PremiumTest extends SimpleTestCase{
     public String skypeName, cardNumber, nameOnCard, ExpiryMonth, ExpiryYear, cardSecurityCode, premiumURL;
+    private HashMap<String, String> CardInformation;
 
     @BeforeClass
     public void initVariables(){
@@ -32,9 +33,10 @@ public class PremiumTest extends SimpleTestCase{
 
     @BeforeMethod
     public void beforeMethod(){
+        //Redirect
         driver.get(HomePage + premiumURL);
         PremiumPage premiumPage = new PremiumPage(driver);
-        premiumPage.clickUnlimitedButton();
+        premiumPage.ChooseUnlimitedPackage();
         //Login Function
         SignIn signIn = new SignIn(driver);
         signIn.Login(skypeName);
@@ -44,7 +46,7 @@ public class PremiumTest extends SimpleTestCase{
     public void PremiumTest() {
 
         CheckoutPage checkoutPage = new CheckoutPage(driver);
-        checkoutPage.clickTOS();
+        checkoutPage.UseNewPaymentMethod();
 
         PaymentMethodPage paymentMethodPage = new PaymentMethodPage(driver);
 
