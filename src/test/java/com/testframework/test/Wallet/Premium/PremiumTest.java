@@ -3,6 +3,8 @@ package com.testframework.test.Wallet.Premium;
 import com.testframework.base.BaseTestCase.SimpleTestCase;
 import com.testframework.base.Wallet.CheckOut.*;
 import com.testframework.base.Wallet.Premium.PremiumPage;
+import io.selendroid.exceptions.NoSuchElementException;
+import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -29,6 +31,15 @@ public class PremiumTest extends SimpleTestCase{
         ExpiryYear = resourceBundle.getString("ExpiryYear");
         cardSecurityCode = resourceBundle.getString("cardSecurityCode");
         premiumURL = resourceBundle.getString("premiumURL");
+        CardInformation = new HashMap<String, String>(){
+            {
+                put("cardNumber", cardNumber);
+                put("nameOnCard", nameOnCard);
+                put("ExpiryMonth", ExpiryMonth);
+                put("ExpiryYear", ExpiryYear);
+                put("cardSecurityCode", cardSecurityCode);
+            }
+        };
     }
 
     @BeforeMethod
@@ -44,21 +55,17 @@ public class PremiumTest extends SimpleTestCase{
 
     @Test()
     public void PremiumTest() {
-
-        CheckoutPage checkoutPage = new CheckoutPage(driver);
-        checkoutPage.UseNewPaymentMethod();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if(driver.findElements(By.linkText("Use a new payment method")).size() != 0){
+            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            checkoutPage.UseNewPaymentMethod();
+        }
 
         PaymentMethodPage paymentMethodPage = new PaymentMethodPage(driver);
-
-        HashMap<String, String> CardInformation = new HashMap<String, String>(){
-            {
-                put("cardNumber", cardNumber);
-                put("nameOnCard", nameOnCard);
-                put("ExpiryMonth", ExpiryMonth);
-                put("ExpiryYear", ExpiryYear);
-                put("cardSecurityCode", cardSecurityCode);
-            }
-        };
         paymentMethodPage.fillCreditCardForm(CardInformation);
         paymentMethodPage.clickPayNow();
 

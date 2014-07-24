@@ -9,6 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
+import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPageToLoad;
+
 /**
  * Created by kerua on 7/21/2014.
  */
@@ -25,6 +27,7 @@ public class PremiumPage {
     }
 
     public void ChooseUnlimitedPackage() {
+        WaitForPageToLoad(driver);
         WaitForLoad.WaitForElement(UnlimitedButton);
         UnlimitedButton.click();
     }

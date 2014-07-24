@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
+import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPageToLoad;
 import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForSuccess;
 
 /**
@@ -30,6 +31,7 @@ public class OrderConfirmationPage {
 
 
     public void verifyOrderPlaced() {
+        WaitForPageToLoad(driver);
         WaitForSuccess(driver);
     }
 }

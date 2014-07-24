@@ -1,11 +1,14 @@
 package com.testframework.base.Utils.WebDriverhelper;
 
+import com.google.common.base.Function;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,6 +18,8 @@ public class WaitForLoad {
     static int timeOut = 5000;
     static int timeOutSeconds = 5;
     static int numberOfWait = 5;
+    static int waitForTransactionSuccess = 60;
+    static int waitForPageToLoad = 60;
 
     public static void WaitForElement(WebElement Element, int timeOut, int numberOfWait){
         for (int i = 0; i < numberOfWait; i++){
@@ -57,13 +62,13 @@ public class WaitForLoad {
     }
 
     public static void WaitForSuccess(WebDriver driver){
-        new WebDriverWait(driver, 25).until(
+        new WebDriverWait(driver, waitForTransactionSuccess).until(
                 ExpectedConditions.visibilityOfElementLocated(By.className("successful"))
         );
     }
 
     public static void WaitForPageToLoad(WebDriver driver){
-        driver.manage().timeouts().pageLoadTimeout(timeOutSeconds,TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(waitForPageToLoad,TimeUnit.SECONDS);
     }
 
     public static void WaitForSeconds(int TimeOutSeconds, WebDriver driver){
@@ -83,5 +88,20 @@ public class WaitForLoad {
     public static void WaitForFrameAndSwitchTo(WebDriver driver, String frameLocator){
         WebDriverWait wait = new WebDriverWait(driver, timeOutSeconds);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameLocator));
+    }
+
+    public static void WaitWithOutExcpetion(WebDriver driver, By by){
+        FluentWait wait = new FluentWait(driver);
+        wait.withTimeout(timeOutSeconds,TimeUnit.SECONDS).pollingEvery(10,TimeUnit.MILLISECONDS).ignoring(org.openqa.selenium.NoSuchElementException.class);
+        wait.until(ExpectedConditions.elementToBeClickable(by));
+    }
+
+    public static boolean IsElementExistByLinkText(WebDriver driver, String Locator){
+        try{
+            driver.findElement(By.linkText(Locator));
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }

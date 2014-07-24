@@ -112,7 +112,6 @@ public class PaymentMethodPage {
 
 
     public void fillCreditCardForm(HashMap<String, String> CardInformation) {
-        clickTOS();
         selectIframe();
         enterCardNumber(CardInformation.get("cardNumber"));
         enterNameOnCard(CardInformation.get("nameOnCard"));
@@ -121,5 +120,6 @@ public class PaymentMethodPage {
         enterCardSecurityCode(CardInformation.get("cardSecurityCode"));
         nameOnCard.click();
         deselectIframe();
+        clickTOS();
     }
 }
