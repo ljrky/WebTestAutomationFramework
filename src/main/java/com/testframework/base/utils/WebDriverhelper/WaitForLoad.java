@@ -68,7 +68,12 @@ public class WaitForLoad {
     }
 
     public static void WaitForPageToLoad(WebDriver driver){
-        driver.manage().timeouts().pageLoadTimeout(waitForPageToLoad,TimeUnit.SECONDS);
+//        driver.manage().timeouts().pageLoadTimeout(waitForPageToLoad,TimeUnit.SECONDS);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void WaitForSeconds(int TimeOutSeconds, WebDriver driver){

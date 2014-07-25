@@ -1,11 +1,19 @@
 package com.testframework.base.BaseTestCase;
 
 import com.testframework.base.Wallet.CheckOut.SignIn;
+import io.selendroid.SelendroidCapabilities;
+import io.selendroid.SelendroidConfiguration;
+import io.selendroid.SelendroidDriver;
+import io.selendroid.SelendroidLauncher;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -15,11 +23,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getResourceBundle;
+import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPageToLoad;
 
 /**
  * Created by kerua on 7/9/2014.
  */
 public class SimpleTestCase {
+    private SelendroidLauncher selendroidServer = null;
     protected WebDriver driver;
     protected String HomePage, BrowserType, logoutURL, IEProperty, IEDriver, ChromeProperty, ChromeDriver, WPRemoteDriverURL;
 
@@ -37,6 +47,7 @@ public class SimpleTestCase {
         launchBrowser(BrowserType);
         //Direct to Logout Page
         driver.get(HomePage + logoutURL);
+        WaitForPageToLoad(driver.findElement(By.className("bottom")));
     }
 
     @AfterClass
@@ -54,6 +65,23 @@ public class SimpleTestCase {
             case "Chrome":
                 System.setProperty(ChromeProperty, ChromeDriver);
                 driver = new ChromeDriver();
+                break;
+            case "Android":
+                if (selendroidServer != null) {
+                    selendroidServer.stopSelendroid();
+                }
+                SelendroidConfiguration config = new SelendroidConfiguration();
+
+                selendroidServer = new SelendroidLauncher(config);
+                selendroidServer.lauchSelendroid();
+
+                DesiredCapabilities caps = SelendroidCapabilities.android();
+
+                try {
+                    driver = new SelendroidDriver(caps);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case "WP":
                 DesiredCapabilities capWP = DesiredCapabilities.internetExplorer();

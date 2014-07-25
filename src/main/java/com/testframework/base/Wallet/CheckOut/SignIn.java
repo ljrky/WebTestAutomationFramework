@@ -60,7 +60,6 @@ public class SignIn {
     }
 
     public void Login(String testData_UserName){
-        WaitForPageToLoad(driver);
         clickSignInWithSkypeAccount();
         SignInWithSkypeAccount(testData_UserName);
     }

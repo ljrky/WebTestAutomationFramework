@@ -1,8 +1,7 @@
 package com.testframework.test.Wallet.CheckOut;
 
-import com.testframework.base.Wallet.CheckOut.*;
 import com.testframework.base.BaseTestCase.SimpleTestCase;
-import com.testframework.base.Wallet.SkypeHomePage.MyAccountPage;
+import com.testframework.base.Wallet.CheckOut.*;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -12,20 +11,17 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getResourceBundle;
-import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForSeconds;
-import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitWithOutExcpetion;
 
 /**
- * Created by kerua on 7/17/2014.
+ * Created by kerua on 7/25/2014.
  */
-public class CheckOutTest extends SimpleTestCase{
-
+public class NewUserWithoutBillingAddressCheckOutTest extends SimpleTestCase {
     private String skypeName, cardNumber, nameOnCard, ExpiryMonth, ExpiryYear, cardSecurityCode, buyCreditURL;
     private HashMap<String, String> CardInformation;
 
     @BeforeClass
     public void initVariables(){
-        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.CheckOut.CheckOutTest");
+        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.CheckOut.NewUserWithoutBillingAddressCheckOutTest");
         skypeName = resourceBundle.getString("skypeName");
         cardNumber = resourceBundle.getString("cardNumber");
         nameOnCard = resourceBundle.getString("nameOnCard");
@@ -56,7 +52,17 @@ public class CheckOutTest extends SimpleTestCase{
     }
 
     @Test()
-    public void HomePage() {
+    public void TestBillingAddressPage() {
+        //Need to find wait funciton
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        BillingAddressPage billingAddressPage = new BillingAddressPage(driver);
+        billingAddressPage.fillBillingAddress(CardInformation);
+
         //Need to find wait funciton
         try {
             Thread.sleep(5000);
@@ -68,9 +74,9 @@ public class CheckOutTest extends SimpleTestCase{
             checkoutPage.UseNewPaymentMethod();
         }
 
-    	PaymentMethodPage paymentMethodPage = new PaymentMethodPage(driver);
-		paymentMethodPage.fillCreditCardForm(CardInformation);
-	    paymentMethodPage.clickPayNow();
+        PaymentMethodPage paymentMethodPage = new PaymentMethodPage(driver);
+        paymentMethodPage.fillCreditCardForm(CardInformation);
+        paymentMethodPage.clickPayNow();
 
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
         orderConfirmationPage.verifyOrderPlaced();
