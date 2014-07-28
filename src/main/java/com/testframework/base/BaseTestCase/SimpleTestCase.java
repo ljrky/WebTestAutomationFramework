@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -31,7 +32,7 @@ import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPa
 public class SimpleTestCase {
     private SelendroidLauncher selendroidServer = null;
     protected WebDriver driver;
-    protected String HomePage, BrowserType, logoutURL, IEProperty, IEDriver, ChromeProperty, ChromeDriver, WPRemoteDriverURL;
+    protected String HomePage, BrowserType, logoutURL, IEProperty, IEDriver, ChromeProperty, ChromeDriver, WPRemoteDriverURL, FireFoxProperty, FireFoxDriver;
 
     @Parameters({ "homePage", "browserType" })
     @BeforeClass()
@@ -66,17 +67,18 @@ public class SimpleTestCase {
                 System.setProperty(ChromeProperty, ChromeDriver);
                 driver = new ChromeDriver();
                 break;
+            case "FireFox":
+                System.setProperty(FireFoxProperty, FireFoxDriver);
+                driver = new FirefoxDriver();
+                break;
             case "Android":
                 if (selendroidServer != null) {
                     selendroidServer.stopSelendroid();
                 }
                 SelendroidConfiguration config = new SelendroidConfiguration();
-
                 selendroidServer = new SelendroidLauncher(config);
                 selendroidServer.lauchSelendroid();
-
                 DesiredCapabilities caps = SelendroidCapabilities.android();
-
                 try {
                     driver = new SelendroidDriver(caps);
                 } catch (Exception e) {
@@ -98,11 +100,13 @@ public class SimpleTestCase {
 
     private void initConfigurationVariables() {
         ResourceBundle resourceBundle = getResourceBundle("com.testframework.base.BaseTestCase.SimpleTestCase");
-        logoutURL = resourceBundle.getString("logoutURL");
         IEProperty = resourceBundle.getString("IEProperty");
         IEDriver = resourceBundle.getString("IEDriver");
         ChromeProperty = resourceBundle.getString("ChromeProperty");
         ChromeDriver = resourceBundle.getString("ChromeDriver");
+        FireFoxProperty = resourceBundle.getString("FireFoxProperty");
+        FireFoxDriver = resourceBundle.getString("FireFoxDriver");
         WPRemoteDriverURL = resourceBundle.getString("WPRemoteDriverURL");
+        logoutURL = resourceBundle.getString("logoutURL");
     }
 }

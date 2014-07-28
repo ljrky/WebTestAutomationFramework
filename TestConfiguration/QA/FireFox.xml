@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Suite" parallel="false">
     <test name="Test">
-		<parameter name="browserType" value="IE" />
+		<parameter name="browserType" value="FireFox" />
         <parameter name="homePage" value="https://qasecure.skype.net" />
         <classes>
             <!--<class name="com.testframework.test.Wallet.Premium.PremiumTest" />-->
