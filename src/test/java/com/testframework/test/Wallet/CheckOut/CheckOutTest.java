@@ -53,11 +53,14 @@ public class CheckOutTest extends SimpleTestCase{
         //Login Function
         SignIn signIn = new SignIn(driver);
         signIn.Login(skypeName);
+
+        //if the currency is different
+        skypecreditPage.ContinueWithDefaultProduct();
     }
 
     @Test()
     public void HomePage() {
-        //Need to find wait funciton
+        //Need to find wait function
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

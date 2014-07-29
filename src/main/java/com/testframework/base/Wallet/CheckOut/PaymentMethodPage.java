@@ -12,6 +12,7 @@ import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForElement;
 import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPageToLoad;
@@ -43,12 +44,12 @@ public class PaymentMethodPage {
     @FindBy(how = How.ID, using = "cancelFlow")
     public static WebElement cancel;
 
-//    @FindBy(how = How.CLASS_NAME, using = "skypePaymentFrame")
-//    public static WebElement iFrame;
-
-    //For Android
-    @FindBy(how = How.TAG_NAME, using = "iframe")
+    @FindBy(how = How.CLASS_NAME, using = "skypePaymentFrame")
     public static WebElement iFrame;
+
+//    //For Android
+//    @FindBy(how = How.TAG_NAME, using = "iframe")
+//    public static WebElement iFrame;
 
     @FindBy(how = How.CLASS_NAME, using = "bottom")
     public static WebElement FooterOfThePage;
@@ -71,7 +72,6 @@ public class PaymentMethodPage {
     }
 
     public void selectExpiryMonth(String testData_ExpiryMonth) {
-//        expiryDateMonth.sendKeys(testData_ExpiryMonth);
         Select realSelect = new Select(expiryDateMonth);
         realSelect.selectByValue(testData_ExpiryMonth);
     }
@@ -121,15 +121,13 @@ public class PaymentMethodPage {
 
 
     public void fillCreditCardForm(HashMap<String, String> CardInformation) {
-//        WaitForPageToLoad(iFrame);
         //Android
-
         try {
             Thread.sleep(15000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        WaitForLoad.WaitForElement(iFrame);
+
 
         selectIframe();
         enterCardNumber(CardInformation.get("cardNumber"));

@@ -37,23 +37,6 @@ public class HomePageTest extends SimpleTestCase {
 
     @BeforeClass
     public void initVariables(){
-
-//        Properties properties = new Properties();
-//        try {
-//            properties.load(new FileInputStream("com/testframework/test/SampleSite/HomePageTest.properties"));
-//        } catch (Exception e) {
-//            e.printStackTrace();;
-//        }
-
-//        Properties properties = new Properties();
-//        try {
-//            properties.load(ClassLoader.getSystemResourceAsStream("/HomePageTest.properties"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        email = properties.getProperty("email");
-//        password = properties.getProperty("password");
-
           ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.SampleSite.HomePageTest");
           email = resourceBundle.getString("email");
           password = resourceBundle.getString("password");

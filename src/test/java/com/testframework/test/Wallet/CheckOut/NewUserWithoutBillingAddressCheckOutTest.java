@@ -53,7 +53,7 @@ public class NewUserWithoutBillingAddressCheckOutTest extends SimpleTestCase {
 
     @Test()
     public void TestBillingAddressPage() {
-        //Need to find wait funciton
+        //Need to find wait function
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -63,7 +63,7 @@ public class NewUserWithoutBillingAddressCheckOutTest extends SimpleTestCase {
         BillingAddressPage billingAddressPage = new BillingAddressPage(driver);
         billingAddressPage.fillBillingAddress(CardInformation);
 
-        //Need to find wait funciton
+        //Need to find wait function
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
