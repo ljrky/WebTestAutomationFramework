@@ -55,6 +55,11 @@ public class CheckOutTest extends SimpleTestCase{
         signIn.Login(skypeName);
 
         //if the currency is different
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         skypecreditPage.ContinueWithDefaultProduct();
     }
 

@@ -12,8 +12,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <browser></browser>
-    <environment></environment>
+    <Browser></Browser>
+    <HomePage></HomePage>
+    <waitForElementTimeout></waitForElementTimeout>
   </properties>
 
   <dependencies>
@@ -56,8 +57,18 @@
                 <version>2.17</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>TestConfiguration\${environment}\${browser}.xml</suiteXmlFile>
+                        <suiteXmlFile>TestConfiguration\SmokeTest\SmokeTest.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <systemProperties>
+                        <property>
+                            <name>waitForElementTimeout</name>
+                            <value>${waitForElementTimeout}</value>
+                            <name>HomePage</name>
+                            <value>${HomePage}</value>
+                            <name>Browser</name>
+                            <value>${Browser}</value>
+                        </property>
+                    </systemProperties>
                 </configuration>
             </plugin>
         </plugins>

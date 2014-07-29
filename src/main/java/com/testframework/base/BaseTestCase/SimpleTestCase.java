@@ -32,14 +32,13 @@ import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPa
 public class SimpleTestCase {
     private SelendroidLauncher selendroidServer = null;
     protected WebDriver driver;
-    protected String HomePage, BrowserType, logoutURL, IEProperty, IEDriver, ChromeProperty, ChromeDriver, WPRemoteDriverURL, FireFoxProperty, FireFoxDriver;
+    protected String HomePage, BrowserType, waitForElementTimeout, logoutURL, IEProperty, IEDriver, ChromeProperty, ChromeDriver, WPRemoteDriverURL, FireFoxProperty, FireFoxDriver;
 
-    @Parameters({ "homePage", "browserType" })
     @BeforeClass()
-    public void init(String homePage, String browserType) {
-
-        this.HomePage = homePage;
-        this.BrowserType = browserType;
+    public void init() {
+        this.HomePage = System.getProperty("HomePage");
+        this.BrowserType = System.getProperty("Browser");
+        this.waitForElementTimeout = System.getProperty("waitForElementTimeout");
 
         initConfigurationVariables();
 
