@@ -1,5 +1,6 @@
 package com.testframework.base.BaseTestCase;
 
+import com.testframework.base.Utils.WebDriverhelper.WaitForLoad;
 import com.testframework.base.Wallet.CheckOut.SignIn;
 import io.selendroid.SelendroidCapabilities;
 import io.selendroid.SelendroidConfiguration;
@@ -24,6 +25,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getResourceBundle;
+import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForLogoutPageToLoad;
 import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPageToLoad;
 
 /**
@@ -38,20 +40,24 @@ public class SimpleTestCase {
     public void init() {
         this.HomePage = System.getProperty("HomePage");
         this.BrowserType = System.getProperty("Browser");
-        this.waitForElementTimeout = System.getProperty("waitForElementTimeout");
-
+        WaitForLoad.waitForElementTimeout = Integer.parseInt(System.getProperty("waitForElementTimeout"));
         initConfigurationVariables();
 
         //TODO : add log system here
         //Launch browser
         launchBrowser(BrowserType);
+        //Set implicitly wait for all element
+        WaitForLoad.SetImplicitlyWaitForAllElement(driver);
         //Direct to Logout Page
         driver.get(HomePage + logoutURL);
-        WaitForPageToLoad(driver.findElement(By.className("bottom")));
+        WaitForLogoutPageToLoad(driver);
     }
 
     @AfterClass
     public void stop() {
+        //Direct to Logout Page
+        driver.get(HomePage + logoutURL);
+        WaitForLogoutPageToLoad(driver);
         //Close Browser
         driver.quit();
     }

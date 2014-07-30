@@ -61,7 +61,6 @@ public class BillingAddressPage {
 
 
     public void fillBillingAddress(HashMap<String, String> CardInformation) {
-        WaitForPageToLoad(BillingAddressForm);
         firstName.sendKeys(CardInformation.get("nameOnCard"));
         lastName.sendKeys(CardInformation.get("nameOnCard"));
         address.sendKeys(CardInformation.get("nameOnCard"));

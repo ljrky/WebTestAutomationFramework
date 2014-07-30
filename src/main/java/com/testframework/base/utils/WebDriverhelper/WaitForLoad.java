@@ -19,7 +19,13 @@ public class WaitForLoad {
     static int timeOutSeconds = 5;
     static int numberOfWait = 5;
     static int waitForTransactionSuccess = 60;
-    static int waitForPageToLoad = 60;
+    public static int waitForElementTimeout = 30;
+
+
+    public static void SetImplicitlyWaitForAllElement(WebDriver driver) {
+        System.out.println("waitForElementTimeout is set to : " + waitForElementTimeout);
+        driver.manage().timeouts().implicitlyWait(waitForElementTimeout, TimeUnit.SECONDS);
+    }
 
     public static void WaitForElement(WebElement Element, int timeOut, int numberOfWait){
         for (int i = 0; i < numberOfWait; i++){
@@ -47,11 +53,10 @@ public class WaitForLoad {
         }
     }
 
-
-    public static void WaitForPageToLoad(WebElement FooterOfThePage){
+    public static void WaitForLogoutPageToLoad(WebDriver driver){
         for (int i = 0; i < numberOfWait; i++){
             try {
-                if (FooterOfThePage.isDisplayed()){
+                if (driver.findElement(By.className("bottom")).isDisplayed()){
                     break;
                 }
                 Thread.sleep(timeOut);
@@ -68,7 +73,6 @@ public class WaitForLoad {
     }
 
     public static void WaitForPageToLoad(WebDriver driver){
-//        driver.manage().timeouts().pageLoadTimeout(waitForPageToLoad,TimeUnit.SECONDS);
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

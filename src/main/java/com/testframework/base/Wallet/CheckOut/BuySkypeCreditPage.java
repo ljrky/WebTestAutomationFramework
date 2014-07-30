@@ -8,6 +8,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by kerua on 7/17/2014.
@@ -21,18 +22,24 @@ public class BuySkypeCreditPage {
     @FindBy(how = How.CLASS_NAME, using = "cancelFlow")
     public static WebElement Cancel;
 
-    @FindBy(how = How.CLASS_NAME, using = "bottom")
-    public static WebElement FooterOfThePage;
+    @FindBy(how = How.CLASS_NAME, using = "customSelectElement")
+    public static WebElement Currency;
 
     public BuySkypeCreditPage(WebDriver driver) {
         this.driver = driver;
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver,120);
         PageFactory.initElements(finder, this);
+        WaitForLoad.WaitForElement(Currency);
+        selectCurrency();
     }
 
     public void clickContinue() {
-        WaitForLoad.WaitForElement(Continue);
         Continue.click();
+    }
+
+    public void selectCurrency() {
+        Select realSelect = new Select(Currency);
+        realSelect.selectByValue("EUR");
     }
 
     public void ContinueWithDefaultProduct() {

@@ -42,7 +42,6 @@ public class SignIn {
     }
 
     public void clickSignInWithSkypeAccount() {
-        WaitForPageToLoad(FooterOfThePage);
         WaitForLoad.WaitForElement(SignInWithSkypeAccount);
         if(SignInWithSkypeAccount.isDisplayed()){
             SignInWithSkypeAccount.click();
@@ -56,7 +55,6 @@ public class SignIn {
         Password.click();
         Password.sendKeys(testData_UserName);
         SignIn.click();
-        WaitForPageToLoad(FooterOfThePage);
     }
 
     public void Login(String testData_UserName){

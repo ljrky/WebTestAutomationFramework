@@ -50,17 +50,18 @@ public class CheckOutTest extends SimpleTestCase{
         driver.get(HomePage + buyCreditURL);
         BuySkypeCreditPage skypecreditPage = new BuySkypeCreditPage(driver);
         skypecreditPage.ContinueWithDefaultProduct();
+
         //Login Function
         SignIn signIn = new SignIn(driver);
         signIn.Login(skypeName);
 
         //if the currency is different
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        skypecreditPage.ContinueWithDefaultProduct();
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        skypecreditPage.ContinueWithDefaultProduct();
     }
 
     @Test()
