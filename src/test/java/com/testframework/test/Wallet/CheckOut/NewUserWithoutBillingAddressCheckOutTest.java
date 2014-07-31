@@ -47,8 +47,8 @@ public class NewUserWithoutBillingAddressCheckOutTest extends SimpleTestCase {
         BuySkypeCreditPage skypecreditPage = new BuySkypeCreditPage(driver);
         skypecreditPage.ContinueWithDefaultProduct();
         //Login Function
-        SignIn signIn = new SignIn(driver);
-        signIn.Login(skypeName);
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.Login(skypeName);
     }
 
     @Test()

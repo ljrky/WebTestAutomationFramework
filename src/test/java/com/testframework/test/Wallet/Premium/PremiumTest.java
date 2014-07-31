@@ -3,7 +3,6 @@ package com.testframework.test.Wallet.Premium;
 import com.testframework.base.BaseTestCase.SimpleTestCase;
 import com.testframework.base.Wallet.CheckOut.*;
 import com.testframework.base.Wallet.Premium.PremiumPage;
-import io.selendroid.exceptions.NoSuchElementException;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -49,8 +48,8 @@ public class PremiumTest extends SimpleTestCase{
         PremiumPage premiumPage = new PremiumPage(driver);
         premiumPage.ChooseUnlimitedPackage();
         //Login Function
-        SignIn signIn = new SignIn(driver);
-        signIn.Login(skypeName);
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.Login(skypeName);
     }
 
     @Test()

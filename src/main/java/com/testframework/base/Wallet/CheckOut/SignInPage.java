@@ -2,6 +2,7 @@ package com.testframework.base.Wallet.CheckOut;
 
 import com.testframework.base.Utils.WebDriverhelper.WaitForLoad;
 import com.testframework.base.Wallet.SkypeHomePage.MyAccountPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +16,7 @@ import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPa
 /**
  * Created by kerua on 7/17/2014.
  */
-public class SignIn {
+public class SignInPage {
     private WebDriver driver;
 
     @FindBy(how = How.ID, using = "skypeLogin")
@@ -33,8 +34,11 @@ public class SignIn {
     @FindBy(how = How.ID, using = "signIn")
     public static WebElement SignIn;
 
+    @FindBy(how = How.ID, using = "cancelFlow")
+    public static WebElement Cancel;
 
-    public SignIn(WebDriver driver) {
+
+    public SignInPage(WebDriver driver) {
         this.driver = driver;
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver,
                 120);
@@ -43,9 +47,7 @@ public class SignIn {
 
     public void clickSignInWithSkypeAccount() {
         WaitForLoad.WaitForElement(SignInWithSkypeAccount);
-        if(SignInWithSkypeAccount.isDisplayed()){
-            SignInWithSkypeAccount.click();
-        }
+        SignInWithSkypeAccount.click();
     }
 
     public void SignInWithSkypeAccount(String testData_UserName) {
@@ -55,6 +57,7 @@ public class SignIn {
         Password.click();
         Password.sendKeys(testData_UserName);
         SignIn.click();
+        WaitForLoad.WaitForElement(Cancel);
     }
 
     public void Login(String testData_UserName){

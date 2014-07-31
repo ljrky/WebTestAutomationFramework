@@ -1,6 +1,7 @@
 package com.testframework.base.Wallet.CheckOut;
 
 import com.testframework.base.Utils.WebDriverhelper.WaitForLoad;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForElementToBeClickByID;
+import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForElementToBeVisibleByID;
 
 /**
  * Created by kerua on 7/17/2014.
@@ -30,19 +34,22 @@ public class BuySkypeCreditPage {
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver,120);
         PageFactory.initElements(finder, this);
         WaitForLoad.WaitForElement(Currency);
-        selectCurrency();
     }
 
     public void clickContinue() {
+        WaitForLoad.WaitForElement(Continue);
+        WaitForElementToBeClickByID(driver, "productSelection");
         Continue.click();
     }
 
-    public void selectCurrency() {
+    public void selectCurrency(String CurrencyType) {
+        WaitForLoad.WaitForElement(Currency);
         Select realSelect = new Select(Currency);
-        realSelect.selectByValue("EUR");
+        realSelect.selectByValue(CurrencyType);
     }
 
     public void ContinueWithDefaultProduct() {
+        selectCurrency("EUR");
         clickContinue();
     }
 }

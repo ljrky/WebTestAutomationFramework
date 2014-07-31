@@ -1,6 +1,7 @@
 package com.testframework.base.Wallet.CheckOut;
 
 import com.testframework.base.Utils.WebDriverhelper.WaitForLoad;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -122,12 +123,11 @@ public class PaymentMethodPage {
 
     public void fillCreditCardForm(HashMap<String, String> CardInformation) {
         //Android
-        try {
-            Thread.sleep(15000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+//        try {
+//            Thread.sleep(15000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         selectIframe();
         enterCardNumber(CardInformation.get("cardNumber"));
@@ -138,5 +138,20 @@ public class PaymentMethodPage {
         nameOnCard.click();
         deselectIframe();
         clickTOS();
+    }
+
+
+    public void UseNewPaymentMethod() {
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        WaitForLoad.IsElementExistByID(driver,"orderDetails");
+        if(driver.findElements(By.linkText("Use a new payment method")).size() != 0){
+            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            checkoutPage.UseNewPaymentMethod();
+        }
+
     }
 }

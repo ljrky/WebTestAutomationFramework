@@ -2,7 +2,6 @@ package com.testframework.test.Wallet.CheckOut;
 
 import com.testframework.base.Wallet.CheckOut.*;
 import com.testframework.base.BaseTestCase.SimpleTestCase;
-import com.testframework.base.Wallet.SkypeHomePage.MyAccountPage;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -12,8 +11,6 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getResourceBundle;
-import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForSeconds;
-import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitWithOutExcpetion;
 
 /**
  * Created by kerua on 7/17/2014.
@@ -52,32 +49,15 @@ public class CheckOutTest extends SimpleTestCase{
         skypecreditPage.ContinueWithDefaultProduct();
 
         //Login Function
-        SignIn signIn = new SignIn(driver);
-        signIn.Login(skypeName);
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.Login(skypeName);
 
-        //if the currency is different
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        skypecreditPage.ContinueWithDefaultProduct();
     }
 
     @Test()
     public void HomePage() {
-        //Need to find wait function
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if(driver.findElements(By.linkText("Use a new payment method")).size() != 0){
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
-            checkoutPage.UseNewPaymentMethod();
-        }
-
     	PaymentMethodPage paymentMethodPage = new PaymentMethodPage(driver);
+        paymentMethodPage.UseNewPaymentMethod();
 		paymentMethodPage.fillCreditCardForm(CardInformation);
 	    paymentMethodPage.clickPayNow();
 

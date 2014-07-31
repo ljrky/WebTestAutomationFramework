@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
-import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.IsElementExistByLinkText;
 import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPageToLoad;
 
 /**

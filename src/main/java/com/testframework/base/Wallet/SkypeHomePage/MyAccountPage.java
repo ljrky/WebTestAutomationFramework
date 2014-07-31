@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
-import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForElementToBeVisible;
 import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPageToLoad;
 
 /**
@@ -28,8 +27,8 @@ public class MyAccountPage {
         PageFactory.initElements(finder, this);
     }
 
-    public void waitForMyAccountPage(){
+//    public void waitForMyAccountPage(){
 //        WaitForPageToLoad(driver);
 //        WaitForElementToBeVisible(driver,Header);
-    }
+//    }
 }

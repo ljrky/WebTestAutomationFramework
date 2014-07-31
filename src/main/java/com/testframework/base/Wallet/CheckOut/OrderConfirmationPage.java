@@ -31,7 +31,6 @@ public class OrderConfirmationPage {
 
 
     public void verifyOrderPlaced() {
-        WaitForPageToLoad(driver);
         WaitForSuccess(driver);
     }
 }
