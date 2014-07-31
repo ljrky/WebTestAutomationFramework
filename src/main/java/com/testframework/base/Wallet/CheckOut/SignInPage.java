@@ -1,8 +1,6 @@
 package com.testframework.base.Wallet.CheckOut;
 
-import com.testframework.base.Utils.WebDriverhelper.WaitForLoad;
-import com.testframework.base.Wallet.SkypeHomePage.MyAccountPage;
-import org.openqa.selenium.By;
+import com.testframework.base.Utils.WebDriverHelper.WaitHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,8 +8,6 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
-
-import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPageToLoad;
 
 /**
  * Created by kerua on 7/17/2014.
@@ -46,18 +42,18 @@ public class SignInPage {
     }
 
     public void clickSignInWithSkypeAccount() {
-        WaitForLoad.WaitForElement(SignInWithSkypeAccount);
+        WaitHelper.WaitForElement(SignInWithSkypeAccount);
         SignInWithSkypeAccount.click();
     }
 
     public void SignInWithSkypeAccount(String testData_UserName) {
-        WaitForLoad.WaitForElement(Username);
+        WaitHelper.WaitForElement(Username);
         Username.click();
         Username.sendKeys(testData_UserName);
         Password.click();
         Password.sendKeys(testData_UserName);
         SignIn.click();
-        WaitForLoad.WaitForElement(Cancel);
+        WaitHelper.WaitForElement(Cancel);
     }
 
     public void Login(String testData_UserName){

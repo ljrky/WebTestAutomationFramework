@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
-import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPageToLoad;
+import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForPageToLoad;
 
 /**
  * Created by kerua on 7/17/2014.

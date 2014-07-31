@@ -1,6 +1,6 @@
 package com.testframework.base.Wallet.CheckOut;
 
-import com.testframework.base.Utils.WebDriverhelper.WaitForLoad;
+import com.testframework.base.Utils.WebDriverHelper.WaitHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -13,10 +13,8 @@ import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
-import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForElement;
-import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPageToLoad;
+import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForElement;
 
 /**
  * Created by kerua on 7/21/2014.
@@ -147,7 +145,7 @@ public class PaymentMethodPage {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        WaitForLoad.IsElementExistByID(driver,"orderDetails");
+        WaitHelper.IsElementExistByID(driver, "orderDetails");
         if(driver.findElements(By.linkText("Use a new payment method")).size() != 0){
             CheckoutPage checkoutPage = new CheckoutPage(driver);
             checkoutPage.UseNewPaymentMethod();

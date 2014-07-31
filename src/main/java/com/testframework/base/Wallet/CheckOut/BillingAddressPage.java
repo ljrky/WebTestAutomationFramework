@@ -1,6 +1,6 @@
 package com.testframework.base.Wallet.CheckOut;
 
-import com.testframework.base.Utils.WebDriverhelper.WaitForLoad;
+import com.testframework.base.Utils.WebDriverHelper.WaitHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,8 +11,6 @@ import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.HashMap;
-
-import static com.testframework.base.Utils.WebDriverhelper.WaitForLoad.WaitForPageToLoad;
 
 /**
  * Created by kerua on 7/25/2014.
@@ -55,7 +53,7 @@ public class BillingAddressPage {
     }
 
     public void clickContinue() {
-        WaitForLoad.WaitForElement(ContinueButton);
+        WaitHelper.WaitForElement(ContinueButton);
         ContinueButton.click();
     }
 

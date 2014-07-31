@@ -1,4 +1,4 @@
-package com.testframework.base.Utils.WebDriverhelper;
+package com.testframework.base.Utils.WebDriverHelper;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by kerua on 7/9/2014.
  */
-public class WaitForLoad {
+public class WaitHelper {
     static int numberOfWait = 5;
     static int waitForTransactionSuccess = 120;
     public static int waitForElementTimeout = 30;
@@ -52,10 +53,10 @@ public class WaitForLoad {
         }
     }
 
-    public static void WaitForElementToBeEnable(WebElement Element){
+    public static void WaitForElementToBeInvisible(WebElement Element){
         for (int i = 0; i < numberOfWait; i++){
             try {
-                if (Element.isEnabled()){
+                if (Element.isDisplayed() == false){
                     break;
                 }
                 Thread.sleep(timeOut);
