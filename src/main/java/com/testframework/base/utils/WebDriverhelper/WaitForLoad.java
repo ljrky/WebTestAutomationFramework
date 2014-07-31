@@ -103,6 +103,11 @@ public class WaitForLoad {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id(locator)));
     }
 
+    public static void WaitForInvisibilityOfElementByID(WebDriver driver, String locator){
+        WebDriverWait wait = new WebDriverWait(driver, waitForElementTimeout);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(locator)));
+    }
+
     public static void WaitForElementToBeVisibleByID(WebDriver driver, String locator){
         WebDriverWait wait = new WebDriverWait(driver, waitForElementTimeout);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(locator)));

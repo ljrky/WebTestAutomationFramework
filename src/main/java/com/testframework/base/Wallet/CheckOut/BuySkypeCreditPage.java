@@ -32,6 +32,8 @@ public class BuySkypeCreditPage {
     @FindBy(how = How.ID, using = "label-checkbox-autoRecharge")
     public static WebElement EnableAutoRecharge;
 
+    @FindBy(how = How.ID, using = "loader")
+    public static WebElement Loader;
 
     public BuySkypeCreditPage(WebDriver driver) {
         this.driver = driver;
@@ -68,7 +70,7 @@ public class BuySkypeCreditPage {
 
     public void ContinueWithDefaultProduct() {
         selectCurrency("EUR");
-        DisableAutoRecharge();
+        WaitForLoad.WaitForInvisibilityOfElementByID(driver,"loader");
         clickContinue();
     }
 }

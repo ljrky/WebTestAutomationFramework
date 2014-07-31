@@ -60,14 +60,17 @@ public class SimpleTestCase {
             case "IE" :
                 System.setProperty(IEProperty, IEDriver);
                 driver = new InternetExplorerDriver();
+                driver.manage().window().maximize();
                 break;
             case "Chrome":
                 System.setProperty(ChromeProperty, ChromeDriver);
                 driver = new ChromeDriver();
+                driver.manage().window().maximize();
                 break;
             case "FireFox":
                 System.setProperty(FireFoxProperty, FireFoxDriver);
                 driver = new FirefoxDriver();
+                driver.manage().window().maximize();
                 break;
             case "Android":
                 if (selendroidServer != null) {
