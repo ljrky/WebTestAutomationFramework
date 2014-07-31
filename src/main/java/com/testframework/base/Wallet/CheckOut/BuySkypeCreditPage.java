@@ -29,6 +29,10 @@ public class BuySkypeCreditPage {
     @FindBy(how = How.CLASS_NAME, using = "customSelectElement")
     public static WebElement Currency;
 
+    @FindBy(how = How.ID, using = "label-checkbox-autoRecharge")
+    public static WebElement EnableAutoRecharge;
+
+
     public BuySkypeCreditPage(WebDriver driver) {
         this.driver = driver;
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver,120);
@@ -42,6 +46,20 @@ public class BuySkypeCreditPage {
         Continue.click();
     }
 
+    public void DisableAutoRecharge() {
+        WaitForLoad.WaitForElement(EnableAutoRecharge);
+        if(EnableAutoRecharge.isSelected()){
+            EnableAutoRecharge.click();
+        }
+    }
+
+    public void EnableAutoRecharge() {
+        WaitForLoad.WaitForElement(EnableAutoRecharge);
+        if(EnableAutoRecharge.isSelected() != true){
+            EnableAutoRecharge.click();
+        }
+    }
+
     public void selectCurrency(String CurrencyType) {
         WaitForLoad.WaitForElement(Currency);
         Select realSelect = new Select(Currency);
@@ -50,6 +68,7 @@ public class BuySkypeCreditPage {
 
     public void ContinueWithDefaultProduct() {
         selectCurrency("EUR");
+        DisableAutoRecharge();
         clickContinue();
     }
 }
