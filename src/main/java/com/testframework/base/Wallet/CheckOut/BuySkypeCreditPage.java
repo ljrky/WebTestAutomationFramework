@@ -76,19 +76,21 @@ public class BuySkypeCreditPage {
     }
 
     public void selectCurrency(String CurrencyType) {
-        WaitHelper.WaitForSeconds(5);
-        WaitHelper.WaitForElement(SkypeCreditPrice);
-        WaitHelper.WaitForElement(Total);
-        WaitHelper.WaitForElementToBePresenceByClassName(driver,"sideMessage");
+        WaitForOrderForm();
         SelectHelper.selectByValue(Currency, CurrencyType);
-        WaitHelper.WaitForSeconds(5);
-        WaitHelper.WaitForElement(SkypeCreditPrice);
-        WaitHelper.WaitForElement(Total);
-        WaitHelper.WaitForElementToBePresenceByClassName(driver,"sideMessage");
+        driver.navigate().refresh();
+        WaitForOrderForm();
     }
 
     public void ContinueWithDefaultProduct() {
         selectCurrency("EUR");
         clickContinue();
+    }
+
+    public void WaitForOrderForm() {
+        WaitHelper.WaitForSeconds(5);
+        WaitHelper.WaitForElement(SkypeCreditPrice);
+        WaitHelper.WaitForElement(Total);
+        WaitHelper.WaitForElementToBePresenceByClassName(driver,"sideMessage");
     }
 }
