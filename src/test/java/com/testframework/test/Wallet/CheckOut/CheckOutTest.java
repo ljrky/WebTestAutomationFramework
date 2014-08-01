@@ -58,6 +58,7 @@ public class CheckOutTest extends SimpleTestCase{
     public void HomePage() {
     	PaymentMethodPage paymentMethodPage = new PaymentMethodPage(driver);
         paymentMethodPage.UseNewPaymentMethod();
+        paymentMethodPage.selectPaymentMethod("CARD-SKYPE");
 		paymentMethodPage.fillCreditCardForm(CardInformation);
 	    paymentMethodPage.clickPayNow();
 
