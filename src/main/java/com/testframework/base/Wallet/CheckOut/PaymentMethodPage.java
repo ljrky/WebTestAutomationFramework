@@ -46,12 +46,11 @@ public class PaymentMethodPage {
     @FindBy(how = How.CLASS_NAME, using = "skypePaymentFrame")
     public static WebElement iFrame;
 
+    @FindBy(how = How.CLASS_NAME, using = "tab")
+    public static WebElement PaymentMethodTab;
+
     @FindBy(how = How.ID, using = "loader")
     public static WebElement Loader;
-
-//    //For Android
-//    @FindBy(how = How.TAG_NAME, using = "iframe")
-//    public static WebElement iFrame;
 
     @FindBy(how = How.CLASS_NAME, using = "bottom")
     public static WebElement FooterOfThePage;
@@ -97,6 +96,12 @@ public class PaymentMethodPage {
         payNow.click();
     }
 
+    public void clickContinue() {
+        WaitHelper.WaitForElementToBeClickByID(driver,"continueButton");
+        clickTOS();
+        payNow.click();
+    }
+
     public void selectIframe() {
         driver.switchTo().frame(iFrame);
     }
@@ -123,13 +128,7 @@ public class PaymentMethodPage {
 
 
     public void selectPaymentMethod(String paymentMethod) {
-//        try {
-//            Thread.sleep(10000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
-        WaitHelper.WaitForInvisibilityOfElementByID(driver, "loader");
+        WaitHelper.WaitForElement(PaymentMethodTab);
 
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         String executionScript =    "function selectMethod()" +
@@ -146,8 +145,6 @@ public class PaymentMethodPage {
                                         "}" +
                                     "}" +
                                       "return selectMethod()";
-
-        System.out.println("executionScript is " + executionScript);
         Boolean result = (Boolean) (executor.executeScript(executionScript));
         if(result == true){
             return;
@@ -176,11 +173,6 @@ public class PaymentMethodPage {
 
 
     public void UseNewPaymentMethod() {
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
         WaitHelper.IsElementExistByID(driver, "orderDetails");
         if(driver.findElements(By.linkText("Use a new payment method")).size() != 0){
             CheckoutPage checkoutPage = new CheckoutPage(driver);

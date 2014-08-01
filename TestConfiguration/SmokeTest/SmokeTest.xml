@@ -5,8 +5,9 @@
         <!--<parameter name="homePage" value="https://qasecure.skype.net" />-->
         <classes>
             <!--<class name="com.testframework.test.Wallet.Premium.PremiumTest" />-->
-            <class name="com.testframework.test.Wallet.CheckOut.CheckOutTest" />
             <!--<class name="com.testframework.test.Wallet.CheckOut.NewUserWithoutBillingAddressCheckOutTest" />-->
+            <!--<class name="com.testframework.test.Wallet.CheckOut.CreditCardCheckOutTest" />-->
+            <class name="com.testframework.test.Wallet.CheckOut.PayPalCheckOutTest" />
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

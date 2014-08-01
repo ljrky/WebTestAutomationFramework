@@ -15,7 +15,7 @@ import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getR
 /**
  * Created by kerua on 7/17/2014.
  */
-public class CheckOutTest extends SimpleTestCase{
+public class CreditCardCheckOutTest extends SimpleTestCase{
 
     private String skypeName, cardNumber, nameOnCard, ExpiryMonth, ExpiryYear, cardSecurityCode, buyCreditURL;
     private HashMap<String, String> CardInformation;
