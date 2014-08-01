@@ -138,4 +138,13 @@ public class WaitHelper {
             return false;
         }
     }
+
+
+    public static void WaitForSeconds(int seconds){
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

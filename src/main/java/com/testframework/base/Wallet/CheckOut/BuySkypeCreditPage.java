@@ -76,17 +76,19 @@ public class BuySkypeCreditPage {
     }
 
     public void selectCurrency(String CurrencyType) {
+        WaitHelper.WaitForSeconds(5);
         WaitHelper.WaitForElement(SkypeCreditPrice);
         WaitHelper.WaitForElement(Total);
         WaitHelper.WaitForElementToBePresenceByClassName(driver,"sideMessage");
         SelectHelper.selectByValue(Currency, CurrencyType);
+        WaitHelper.WaitForSeconds(5);
         WaitHelper.WaitForElement(SkypeCreditPrice);
         WaitHelper.WaitForElement(Total);
         WaitHelper.WaitForElementToBePresenceByClassName(driver,"sideMessage");
     }
 
     public void ContinueWithDefaultProduct() {
-        selectCurrency("GBP");
+        selectCurrency("EUR");
         clickContinue();
     }
 }
