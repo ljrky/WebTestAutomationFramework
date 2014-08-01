@@ -34,6 +34,15 @@ public class BuySkypeCreditPage {
     @FindBy(how = How.ID, using = "loader")
     public static WebElement Loader;
 
+    @FindBy(how = How.ID, using = "totalPrice")
+    public static WebElement Total;
+
+    @FindBy(how = How.ID, using = "productPrice")
+    public static WebElement SkypeCreditPrice;
+
+    @FindBy(how = How.ID, using = "container")
+    public static WebElement SkypeCreditForm;
+
     public BuySkypeCreditPage(WebDriver driver) {
         this.driver = driver;
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver,120);
@@ -42,6 +51,7 @@ public class BuySkypeCreditPage {
     }
 
     public void clickContinue() {
+        SkypeCreditForm.click();
         WaitHelper.WaitForElement(Continue);
         WaitForElementToBeClickByID(driver, "productSelection");
         Continue.click();
@@ -62,14 +72,14 @@ public class BuySkypeCreditPage {
     }
 
     public void selectCurrency(String CurrencyType) {
-//        WaitHelper.WaitForElement(Currency);
+        WaitHelper.WaitForElement(Currency);
         SelectHelper.selectByValue(Currency, CurrencyType);
+        WaitHelper.WaitForElement(SkypeCreditPrice);
+        WaitHelper.WaitForElement(Total);
     }
 
     public void ContinueWithDefaultProduct() {
         selectCurrency("EUR");
-//        WaitForLoad.WaitForInvisibilityOfElementByID(driver,"loader");
-        WaitHelper.WaitForElementToBeInvisible(Loader);
         clickContinue();
     }
 }
