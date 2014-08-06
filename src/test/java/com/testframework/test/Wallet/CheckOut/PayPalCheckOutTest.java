@@ -40,15 +40,14 @@ public class PayPalCheckOutTest extends SimpleTestCase{
 
     @BeforeMethod
     public void beforeMethod(){
-        //Redirect
-        driver.get(HomePage + buyCreditURL);
-        BuySkypeCreditPage skypecreditPage = new BuySkypeCreditPage(driver);
-        skypecreditPage.ContinueWithDefaultProduct();
-
         //Login Function
         SignInPage signInPage = new SignInPage(driver);
         signInPage.Login(skypeName);
 
+        //Redirect
+        driver.get(HomePage + buyCreditURL);
+        BuySkypeCreditPage skypecreditPage = new BuySkypeCreditPage(driver);
+        skypecreditPage.ContinueWithDefaultProduct();
     }
 
     @Test()

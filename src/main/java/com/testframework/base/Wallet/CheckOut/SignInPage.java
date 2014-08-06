@@ -33,6 +33,10 @@ public class SignInPage {
     @FindBy(how = How.ID, using = "cancelFlow")
     public static WebElement Cancel;
 
+    @FindBy(how = How.ID, using = "portalHeader")
+    public static WebElement MyAccount;
+
+
 
     public SignInPage(WebDriver driver) {
         this.driver = driver;
@@ -53,7 +57,7 @@ public class SignInPage {
         Password.click();
         Password.sendKeys(testData_UserName);
         SignIn.click();
-        WaitHelper.WaitForElement(Cancel);
+        WaitHelper.WaitForElement(MyAccount);
     }
 
     public void Login(String testData_UserName){

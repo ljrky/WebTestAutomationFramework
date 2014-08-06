@@ -22,7 +22,7 @@ public class BuySkypeCreditPage {
     @FindBy(how = How.ID, using = "productSelection")
     public static WebElement Continue;
 
-    @FindBy(how = How.CLASS_NAME, using = "cancelFlow")
+    @FindBy(how = How.ID, using = "cancelFlow")
     public static WebElement Cancel;
 
     @FindBy(how = How.CLASS_NAME, using = "customSelectElement")
@@ -51,13 +51,11 @@ public class BuySkypeCreditPage {
         this.driver = driver;
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver,120);
         PageFactory.initElements(finder, this);
-        WaitHelper.WaitForElement(Currency);
     }
 
     public void clickContinue() {
-        SkypeCreditForm.click();
-        WaitHelper.WaitForElement(Continue);
-        WaitForElementToBeClickByID(driver, "productSelection");
+        WaitHelper.WaitForSeconds(10);
+        WaitHelper.WaitForElementToBeClickable(driver,Continue);
         Continue.click();
     }
 
@@ -83,7 +81,6 @@ public class BuySkypeCreditPage {
     }
 
     public void ContinueWithDefaultProduct() {
-        selectCurrency("EUR");
         clickContinue();
     }
 

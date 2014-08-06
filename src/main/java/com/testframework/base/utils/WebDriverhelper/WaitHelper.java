@@ -1,9 +1,7 @@
 package com.testframework.base.Utils.WebDriverHelper;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.google.common.base.Function;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -15,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * Created by kerua on 7/9/2014.
  */
 public class WaitHelper {
-    static int numberOfWait = 5;
+    static int numberOfWait = 10;
     static int waitForTransactionSuccess = 120;
     public static int waitForElementTimeout = 30;
     static int timeOut = waitForElementTimeout / 10;
@@ -44,6 +42,19 @@ public class WaitHelper {
         for (int i = 0; i < numberOfWait; i++){
             try {
                 if (Element.isDisplayed()){
+                    break;
+                }
+                Thread.sleep(timeOut);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void WaitForElementEnabled(WebElement Element){
+        for (int i = 0; i < numberOfWait; i++){
+            try {
+                if (Element.isEnabled()){
                     break;
                 }
                 Thread.sleep(timeOut);
@@ -85,18 +96,49 @@ public class WaitHelper {
         );
     }
 
-    public static void WaitForPageToLoad(WebDriver driver){
-        //need to enhance
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    private static Function<WebDriver, Boolean> isPageLoaded() {
+        return new Function<WebDriver, Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+            }
+        };
     }
+
+    public static void WaitForPageToLoad(WebDriver driver){
+        WebDriverWait wait = new WebDriverWait(driver, waitForElementTimeout);
+        wait.until(isPageLoaded());
+    }
+
+    private static Function<WebDriver, Boolean> haveMoreThanOneOption(final By element) {
+        return new Function<WebDriver, Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                WebElement webElement = driver.findElement(element);
+                if (webElement == null) {
+                    return false;
+                } else {
+                    int size = webElement.findElements(By.id("option")).size();
+                    return size >= 1;
+                }
+            }
+        };
+    }
+
+    public static void waitForDropDownListLoaded(WebDriver driver, final By element) {
+        WebDriverWait wait = new WebDriverWait(driver, waitForElementTimeout);
+        wait.until(haveMoreThanOneOption(element));
+    }
+
 
     public static void WaitForElementToBeClickByID(WebDriver driver, String locator){
         WebDriverWait wait = new WebDriverWait(driver, waitForElementTimeout);
         wait.until(ExpectedConditions.elementToBeClickable(By.id(locator)));
+    }
+
+    public static void WaitForElementToBeClickable(WebDriver driver, WebElement Element){
+        WebDriverWait wait = new WebDriverWait(driver, waitForElementTimeout);
+        wait.until(ExpectedConditions.elementToBeClickable(Element));
     }
 
     public static void WaitForElementToBePresenceByID(WebDriver driver, String locator){
@@ -138,7 +180,6 @@ public class WaitHelper {
             return false;
         }
     }
-
 
     public static void WaitForSeconds(int seconds){
         try {
