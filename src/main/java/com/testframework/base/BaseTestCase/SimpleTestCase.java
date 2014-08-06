@@ -2,10 +2,6 @@ package com.testframework.base.BaseTestCase;
 
 import com.testframework.base.Utils.WebDriverHelper.WaitHelper;
 import io.appium.java_client.AppiumDriver;
-//import io.selendroid.SelendroidCapabilities;
-//import io.selendroid.SelendroidConfiguration;
-//import io.selendroid.SelendroidDriver;
-//import io.selendroid.SelendroidLauncher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -26,7 +22,6 @@ import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForLog
  * Created by kerua on 7/9/2014.
  */
 public class SimpleTestCase {
-//    private SelendroidLauncher selendroidServer = null;
     protected WebDriver driver;
     protected String HomePage, BrowserType, waitForElementTimeout, logoutURL, IEProperty, IEDriver, ChromeProperty, ChromeDriver, WPRemoteDriverURL, FireFoxProperty, FireFoxDriver;
 
@@ -74,18 +69,6 @@ public class SimpleTestCase {
                 driver.manage().window().maximize();
                 break;
             case "Android":
-//                if (selendroidServer != null) {
-//                    selendroidServer.stopSelendroid();
-//                }
-//                SelendroidConfiguration config = new SelendroidConfiguration();
-//                selendroidServer = new SelendroidLauncher(config);
-//                selendroidServer.lauchSelendroid();
-//                DesiredCapabilities caps = SelendroidCapabilities.android();
-//                try {
-//                    driver = new SelendroidDriver(caps);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
                 // set up appium
                 DesiredCapabilities capabilities = new DesiredCapabilities();
                 // Configuration for device name
@@ -96,8 +79,8 @@ public class SimpleTestCase {
                 capabilities.setCapability("platformVersion", "4.3");
                 // Configuration for setting Appnium to execute on Andorid device
                 capabilities.setCapability("platformName", "Android");
-                // http://127.0.0.1:4723/wd/hub地址就是AppiumServer的地址
                 try {
+                    // URL of Appium Server
                     driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
                     Thread.sleep(5000);
                     driver.get("https://qasecure.skype.net");
