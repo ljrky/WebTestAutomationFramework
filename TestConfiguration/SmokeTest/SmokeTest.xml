@@ -6,8 +6,9 @@
         <classes>
             <!--<class name="com.testframework.test.Wallet.Premium.PremiumTest" />-->
             <!--<class name="com.testframework.test.Wallet.CheckOut.NewUserWithoutBillingAddressCheckOutTest" />-->
-            <!--<class name="com.testframework.test.Wallet.CheckOut.CreditCardCheckOutTest" />-->
+            <class name="com.testframework.test.Wallet.CheckOut.CreditCardCheckOutTest" />
             <class name="com.testframework.test.Wallet.CheckOut.PayPalCheckOutTest" />
+            <!--<class name="com.testframework.test.Wallet.CheckOut.PayPalCheckOutTestMobile" />-->
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
