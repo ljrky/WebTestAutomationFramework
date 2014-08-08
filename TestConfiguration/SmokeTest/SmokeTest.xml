@@ -4,11 +4,14 @@
 		<!--<parameter name="browserType" value="Chrome" />-->
         <!--<parameter name="homePage" value="https://qasecure.skype.net" />-->
         <classes>
-            <!--<class name="com.testframework.test.Wallet.Premium.PremiumTest" />-->
+            <!--<class name="com.testframework.test.Wallet.Premium.BuyPremiumWithCreditCardTest" />-->
+            <class name="com.testframework.test.Wallet.Premium.BuyPremiumWithSkypeCreditTest" />
+            <!--<class name="com.testframework.test.Wallet.Premium.BuyPremiumWithPayPalTest" />-->
             <!--<class name="com.testframework.test.Wallet.CheckOut.NewUserWithoutBillingAddressCheckOutTest" />-->
-            <class name="com.testframework.test.Wallet.CheckOut.CreditCardCheckOutTest" />
-            <class name="com.testframework.test.Wallet.CheckOut.PayPalCheckOutTest" />
+            <!--<class name="com.testframework.test.Wallet.CheckOut.CreditCardCheckOutTest" />-->
+            <!--<class name="com.testframework.test.Wallet.CheckOut.PayPalCheckOutTest" />-->
             <!--<class name="com.testframework.test.Wallet.CheckOut.PayPalCheckOutTestMobile" />-->
+            <!--<class name="com.testframework.test.SampleSite.PayPalMobileTest" />-->
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

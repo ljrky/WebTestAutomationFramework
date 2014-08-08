@@ -1,15 +1,11 @@
-package com.testframework.test.Wallet.CheckOut;
+package com.testframework.test.Wallet.Premium;
 
 import com.testframework.base.BaseTestCase.SimpleTestCase;
-import com.testframework.base.Utils.WebDriverHelper.WaitHelper;
-import com.testframework.base.Wallet.CheckOut.BuySkypeCreditPage;
 import com.testframework.base.Wallet.CheckOut.OrderConfirmationPage;
 import com.testframework.base.Wallet.CheckOut.PaymentMethodPage;
 import com.testframework.base.Wallet.CheckOut.SignInPage;
 import com.testframework.base.Wallet.Partner.PayPal.PayPalLogin;
-import com.testframework.base.Wallet.Partner.PayPal.PayPalLoginMobile;
-import org.openqa.selenium.By;
-import org.testng.Assert;
+import com.testframework.base.Wallet.Premium.PremiumPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -20,20 +16,19 @@ import java.util.ResourceBundle;
 import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getResourceBundle;
 
 /**
- * Created by kerua on 7/17/2014.
+ * Created by kerua on 7/21/2014.
  */
-public class PayPalCheckOutTestMobile extends SimpleTestCase{
-
-    private String skypeName, Email, Password, buyCreditURL;
+public class BuyPremiumWithPayPalTest extends SimpleTestCase{
+    public String skypeName, Email, Password, premiumURL;
     private HashMap<String, String> PayPayAccount;
 
     @BeforeClass
     public void initVariables(){
-        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.CheckOut.PayPalCheckOutTest");
+        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.Premium.BuyPremiumWithPayPalTest");
         skypeName = resourceBundle.getString("skypeName");
+        premiumURL = resourceBundle.getString("premiumURL");
         Email = resourceBundle.getString("Email");
         Password = resourceBundle.getString("Password");
-        buyCreditURL = resourceBundle.getString("buyCreditURL");
         PayPayAccount = new HashMap<String, String>(){
             {
                 put("Email", Email);
@@ -49,19 +44,20 @@ public class PayPalCheckOutTestMobile extends SimpleTestCase{
         signInPage.Login(skypeName);
 
         //Redirect
-        driver.get(HomePage + buyCreditURL);
-        BuySkypeCreditPage skypecreditPage = new BuySkypeCreditPage(driver);
-        skypecreditPage.ContinueWithDefaultProduct();
+        driver.get(HomePage + premiumURL);
+        PremiumPage premiumPage = new PremiumPage(driver);
+        premiumPage.ChooseUnlimitedPackage();
     }
 
     @Test()
-    public void HomePage() {
-    	PaymentMethodPage paymentMethodPage = new PaymentMethodPage(driver);
+    public void PremiumTest() {
+
+        PaymentMethodPage paymentMethodPage = new PaymentMethodPage(driver);
         paymentMethodPage.UseNewPaymentMethod();
         paymentMethodPage.selectPaymentMethod("PAYPAL");
-	    paymentMethodPage.clickContinue();
+        paymentMethodPage.clickContinue();
 
-        PayPalLoginMobile payPalLogin = new PayPalLoginMobile(driver);
+        PayPalLogin payPalLogin = new PayPalLogin(driver);
         payPalLogin.SignInWithPayPalAccount(PayPayAccount);
         payPalLogin.Pay();
 

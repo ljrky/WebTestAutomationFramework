@@ -49,11 +49,9 @@ public class PaymentMethodPage {
     @FindBy(how = How.CLASS_NAME, using = "tab")
     public static WebElement PaymentMethodTab;
 
-    @FindBy(how = How.ID, using = "loader")
-    public static WebElement Loader;
+    @FindBy(how = How.ID, using = "paymentMethod")
+    public static WebElement PaymentMethodList;
 
-    @FindBy(how = How.CLASS_NAME, using = "bottom")
-    public static WebElement FooterOfThePage;
 
     public PaymentMethodPage(WebDriver driver) {
         this.driver = driver;
@@ -149,6 +147,11 @@ public class PaymentMethodPage {
         if(result == true){
             return;
         }
+
+        //Payment method drop list
+        Select realSelect = new Select(PaymentMethodList);
+        realSelect.selectByValue(paymentMethod);
+        WaitHelper.WaitForElement(payNow);
     }
 
 

@@ -29,6 +29,8 @@ public class PayPalLoginMobile {
     @FindBy(how = How.ID, using = "continue")
     public static WebElement PayNow;
 
+    @FindBy(how = How.ID, using = "frame")
+    public static WebElement LoginFrame;
 
     public PayPalLoginMobile(WebDriver driver) {
         this.driver = driver;
@@ -37,7 +39,8 @@ public class PayPalLoginMobile {
     }
 
     public void SignInWithPayPalAccount(HashMap<String, String> PayPayAccount) {
-        WaitHelper.WaitForElement(Email);
+        WaitHelper.WaitForSeconds(50);
+        driver.switchTo().frame(LoginFrame);
         Email.clear();
         Email.sendKeys(PayPayAccount.get("Email"));
         Password.clear();

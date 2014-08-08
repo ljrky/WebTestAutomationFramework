@@ -16,13 +16,13 @@ import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getR
 /**
  * Created by kerua on 7/21/2014.
  */
-public class PremiumTest extends SimpleTestCase{
+public class BuyPremiumWithCreditCardTest extends SimpleTestCase{
     public String skypeName, cardNumber, nameOnCard, ExpiryMonth, ExpiryYear, cardSecurityCode, premiumURL;
     private HashMap<String, String> CardInformation;
 
     @BeforeClass
     public void initVariables(){
-        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.Premium.PremiumTest");
+        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.Premium.BuyPremiumWithCreditCardTest");
         skypeName = resourceBundle.getString("skypeName");
         cardNumber = resourceBundle.getString("cardNumber");
         nameOnCard = resourceBundle.getString("nameOnCard");
@@ -43,28 +43,21 @@ public class PremiumTest extends SimpleTestCase{
 
     @BeforeMethod
     public void beforeMethod(){
+        //Login Function
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.Login(skypeName);
+
         //Redirect
         driver.get(HomePage + premiumURL);
         PremiumPage premiumPage = new PremiumPage(driver);
         premiumPage.ChooseUnlimitedPackage();
-        //Login Function
-        SignInPage signInPage = new SignInPage(driver);
-        signInPage.Login(skypeName);
     }
 
     @Test()
     public void PremiumTest() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if(driver.findElements(By.linkText("Use a new payment method")).size() != 0){
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
-            checkoutPage.UseNewPaymentMethod();
-        }
-
         PaymentMethodPage paymentMethodPage = new PaymentMethodPage(driver);
+        paymentMethodPage.UseNewPaymentMethod();
+        paymentMethodPage.selectPaymentMethod("CARD-SKYPE");
         paymentMethodPage.fillCreditCardForm(CardInformation);
         paymentMethodPage.clickPayNow();
 
