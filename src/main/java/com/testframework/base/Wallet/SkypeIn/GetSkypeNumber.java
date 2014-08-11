@@ -27,6 +27,10 @@ public class GetSkypeNumber {
     @FindBy(how = How.ID, using = "local-area-select")
     public static WebElement SelectAreaCode;
 
+    @FindBy(how = How.ID, using = "chkEnableCli")
+    public static WebElement DisplayNumber;
+
+
     public GetSkypeNumber(WebDriver driver) {
         this.driver = driver;
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver,120);
@@ -34,16 +38,20 @@ public class GetSkypeNumber {
     }
 
     public void ChooseNumber() {
-        WaitHelper.WaitForElement(SelectAreaCode);
+        WaitForPageToLoad(driver);
+        WaitHelper.WaitForElementEnabled(SelectAreaCode);
         SelectAreaCode();
         WaitHelper.WaitForElement(FirstSuggestedNumber);
         FirstSuggestedNumber.click();
-        WaitHelper.WaitForElement(Continue);
+        WaitForPageToLoad(driver);
+        WaitHelper.WaitForElement(DisplayNumber);
+        DisplayNumber.click();
+        WaitForPageToLoad(driver);
         Continue.click();
     }
 
     public void SelectAreaCode() {
         Select realSelect = new Select(SelectAreaCode);
-        realSelect.selectByIndex(0);
+        realSelect.selectByIndex(1);
     }
 }

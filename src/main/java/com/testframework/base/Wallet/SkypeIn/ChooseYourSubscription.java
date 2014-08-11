@@ -10,6 +10,9 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForPageToLoad;
+import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForSeconds;
+
 /**
  * Created by kerua on 8/11/2014.
  */
@@ -29,7 +32,10 @@ public class ChooseYourSubscription {
     }
 
     public void ChooseSubscription() {
+        WaitForPageToLoad(driver);
         WaitHelper.WaitForElement(TOS);
+        TOS.click();
+        WaitForSeconds(2);
         TOS.click();
         WaitHelper.WaitForElement(Continue);
         Continue.click();

@@ -9,7 +9,8 @@
             <!--<class name="com.testframework.test.Wallet.SkypeCreditdit.CreditCardCheckOutTest" />-->
             <!--<class name="com.testframework.test.Wallet.SkypeCreditdit.PayPalCheckOutTest" />-->
             <!--<class name="com.testframework.test.SampleSite.PayPalMobileTest" />-->
-            <class name="com.testframework.test.Wallet.SkypeCredit.BuySkypeCreditWithCreditCardTest" />
+            <!--<class name="com.testframework.test.Wallet.SkypeCredit.BuySkypeCreditWithCreditCardTest" />-->
+            <class name="com.testframework.test.Wallet.SkypeIn.BuySkypeInWithCreditCardTest" />
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
