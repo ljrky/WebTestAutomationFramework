@@ -1,15 +1,11 @@
-package com.testframework.test.Wallet.CheckOut;
+package com.testframework.test.Wallet.SkypeCredit;
 
 import com.testframework.base.BaseTestCase.SimpleTestCase;
-import com.testframework.base.Utils.WebDriverHelper.WaitHelper;
 import com.testframework.base.Wallet.CheckOut.BuySkypeCreditPage;
 import com.testframework.base.Wallet.CheckOut.OrderConfirmationPage;
 import com.testframework.base.Wallet.CheckOut.PaymentMethodPage;
 import com.testframework.base.Wallet.CheckOut.SignInPage;
-import com.testframework.base.Wallet.Partner.PayPal.PayPalLogin;
 import com.testframework.base.Wallet.Partner.PayPal.PayPalLoginMobile;
-import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -22,14 +18,14 @@ import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getR
 /**
  * Created by kerua on 7/17/2014.
  */
-public class PayPalCheckOutTestMobile extends SimpleTestCase{
+public class BuySkypeCreditWithPayPalMobileTest extends SimpleTestCase{
 
     private String skypeName, Email, Password, buyCreditURL;
     private HashMap<String, String> PayPayAccount;
 
     @BeforeClass
     public void initVariables(){
-        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.CheckOut.PayPalCheckOutTest");
+        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.SkypeCredit.BuySkypeCreditWithPayPalTest");
         skypeName = resourceBundle.getString("skypeName");
         Email = resourceBundle.getString("Email");
         Password = resourceBundle.getString("Password");

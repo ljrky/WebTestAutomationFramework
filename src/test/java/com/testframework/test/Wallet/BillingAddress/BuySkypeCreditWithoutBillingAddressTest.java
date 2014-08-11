@@ -1,4 +1,4 @@
-package com.testframework.test.Wallet.CheckOut;
+package com.testframework.test.Wallet.BillingAddress;
 
 import com.testframework.base.BaseTestCase.SimpleTestCase;
 import com.testframework.base.Wallet.CheckOut.*;
@@ -15,13 +15,13 @@ import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getR
 /**
  * Created by kerua on 7/25/2014.
  */
-public class NewUserWithoutBillingAddressCheckOutTest extends SimpleTestCase {
+public class BuySkypeCreditWithoutBillingAddressTest extends SimpleTestCase {
     private String skypeName, cardNumber, nameOnCard, ExpiryMonth, ExpiryYear, cardSecurityCode, buyCreditURL;
     private HashMap<String, String> CardInformation;
 
     @BeforeClass
     public void initVariables(){
-        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.CheckOut.NewUserWithoutBillingAddressCheckOutTest");
+        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.BillingAddress.BuySkypeCreditWithoutBillingAddressTest");
         skypeName = resourceBundle.getString("skypeName");
         cardNumber = resourceBundle.getString("cardNumber");
         nameOnCard = resourceBundle.getString("nameOnCard");

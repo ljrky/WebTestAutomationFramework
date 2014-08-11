@@ -1,8 +1,7 @@
-package com.testframework.test.Wallet.CheckOut;
+package com.testframework.test.Wallet.SkypeCredit;
 
 import com.testframework.base.Wallet.CheckOut.*;
 import com.testframework.base.BaseTestCase.SimpleTestCase;
-import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -15,14 +14,14 @@ import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getR
 /**
  * Created by kerua on 7/17/2014.
  */
-public class CreditCardCheckOutTest extends SimpleTestCase{
+public class BuySkypeCreditWithCreditCardTest extends SimpleTestCase{
 
     private String skypeName, cardNumber, nameOnCard, ExpiryMonth, ExpiryYear, cardSecurityCode, buyCreditURL;
     private HashMap<String, String> CardInformation;
 
     @BeforeClass
     public void initVariables(){
-        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.CheckOut.CheckOutTest");
+        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.SkypeCredit.BuySkypeCreditWithCreditCardTest");
         skypeName = resourceBundle.getString("skypeName");
         cardNumber = resourceBundle.getString("cardNumber");
         nameOnCard = resourceBundle.getString("nameOnCard");

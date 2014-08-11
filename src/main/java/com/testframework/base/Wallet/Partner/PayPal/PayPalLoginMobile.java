@@ -17,20 +17,17 @@ import java.util.HashMap;
 public class PayPalLoginMobile {
     private WebDriver driver;
 
-    @FindBy(how = How.ID, using = "email")
+    @FindBy(how = How.NAME, using = "login_email")
     public static WebElement Email;
 
-    @FindBy(how = How.ID, using = "password")
+    @FindBy(how = How.NAME, using = "login_password")
     public static WebElement Password;
 
-    @FindBy(how = How.ID, using = "login")
+    @FindBy(how = How.NAME, using = "login.x")
     public static WebElement Login;
 
     @FindBy(how = How.ID, using = "continue")
     public static WebElement PayNow;
-
-    @FindBy(how = How.ID, using = "frame")
-    public static WebElement LoginFrame;
 
     public PayPalLoginMobile(WebDriver driver) {
         this.driver = driver;
@@ -39,8 +36,8 @@ public class PayPalLoginMobile {
     }
 
     public void SignInWithPayPalAccount(HashMap<String, String> PayPayAccount) {
-        WaitHelper.WaitForSeconds(50);
-        driver.switchTo().frame(LoginFrame);
+        WaitHelper.WaitForSeconds(30);
+        WaitHelper.WaitForElement(Email);
         Email.clear();
         Email.sendKeys(PayPayAccount.get("Email"));
         Password.clear();

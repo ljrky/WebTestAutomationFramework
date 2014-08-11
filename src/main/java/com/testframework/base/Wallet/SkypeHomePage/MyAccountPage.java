@@ -23,9 +23,4 @@ public class MyAccountPage {
                 120);
         PageFactory.initElements(finder, this);
     }
-
-//    public void waitForMyAccountPage(){
-//        WaitForPageToLoad(driver);
-//        WaitForElementToBeVisible(driver,Header);
-//    }
 }

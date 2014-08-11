@@ -23,6 +23,7 @@ import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForLog
  */
 public class SimpleTestCase {
     protected WebDriver driver;
+    DesiredCapabilities capabilities;
     protected String HomePage, BrowserType, waitForElementTimeout, logoutURL, IEProperty, IEDriver, ChromeProperty, ChromeDriver, WPRemoteDriverURL, FireFoxProperty, FireFoxDriver;
 
     @BeforeClass()
@@ -70,7 +71,7 @@ public class SimpleTestCase {
                 break;
             case "Android":
                 // set up appium
-                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities = new DesiredCapabilities();
                 // Configuration for device name
                 capabilities.setCapability("deviceName", "S3");
                 // Configuration for using chrome browser in device

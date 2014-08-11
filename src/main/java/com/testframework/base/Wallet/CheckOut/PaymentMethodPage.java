@@ -52,6 +52,9 @@ public class PaymentMethodPage {
     @FindBy(how = How.ID, using = "paymentMethod")
     public static WebElement PaymentMethodList;
 
+    @FindBy(how = How.ID, using = "ccForm")
+    public static WebElement CreditCardForm;
+
 
     public PaymentMethodPage(WebDriver driver) {
         this.driver = driver;
@@ -156,13 +159,6 @@ public class PaymentMethodPage {
 
 
     public void fillCreditCardForm(HashMap<String, String> CardInformation) {
-        //Android
-//        try {
-//            Thread.sleep(15000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
         selectIframe();
         enterCardNumber(CardInformation.get("cardNumber"));
         enterNameOnCard(CardInformation.get("nameOnCard"));

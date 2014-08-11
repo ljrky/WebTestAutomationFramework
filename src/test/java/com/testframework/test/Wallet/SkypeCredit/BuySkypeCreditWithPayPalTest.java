@@ -1,4 +1,4 @@
-package com.testframework.test.Wallet.CheckOut;
+package com.testframework.test.Wallet.SkypeCredit;
 
 import com.testframework.base.BaseTestCase.SimpleTestCase;
 import com.testframework.base.Wallet.CheckOut.BuySkypeCreditPage;
@@ -18,14 +18,14 @@ import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getR
 /**
  * Created by kerua on 7/17/2014.
  */
-public class PayPalCheckOutTest extends SimpleTestCase{
+public class BuySkypeCreditWithPayPalTest extends SimpleTestCase{
 
     private String skypeName, Email, Password, buyCreditURL;
     private HashMap<String, String> PayPayAccount;
 
     @BeforeClass
     public void initVariables(){
-        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.CheckOut.PayPalCheckOutTest");
+        ResourceBundle resourceBundle = getResourceBundle("com.testframework.test.Wallet.SkypeCredit.BuySkypeCreditWithPayPalTest");
         skypeName = resourceBundle.getString("skypeName");
         Email = resourceBundle.getString("Email");
         Password = resourceBundle.getString("Password");

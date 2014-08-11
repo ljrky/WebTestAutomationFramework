@@ -15,6 +15,7 @@
     <Browser></Browser>
     <HomePage></HomePage>
     <waitForElementTimeout></waitForElementTimeout>
+    <testng_xml>testng.xml</testng_xml>
   </properties>
 
   <dependencies>
@@ -47,7 +48,7 @@
                 <version>2.17</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>TestConfiguration\SmokeTest\SmokeTest.xml</suiteXmlFile>
+                        <suiteXmlFile>TestConfiguration\SmokeTest\${testng_xml}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemProperties>
                         <property>
