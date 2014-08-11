@@ -77,8 +77,30 @@ public class SimpleTestCase {
                 capabilities.setCapability("browserName", "Chrome");
                 // Configuration for Android version on device
                 capabilities.setCapability("platformVersion", "4.3");
-                // Configuration for setting Appnium to execute on Andorid device
+                // Configuration for setting Appnium to execute on Andorid
                 capabilities.setCapability("platformName", "Android");
+                try {
+                    // URL of Appium Server
+                    driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+                    Thread.sleep(5000);
+                    driver.get("https://qasecure.skype.net");
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "iOS":
+                // set up appium
+                capabilities = new DesiredCapabilities();
+                // Configuration for device name
+                capabilities.setCapability("deviceName", "iPad");
+                // Configuration for using Safari browser in device
+                capabilities.setCapability("browserName", "Safari");
+                // Configuration for iOS version on device
+                capabilities.setCapability("platformVersion", "7.1");
+                // Configuration for setting Appnium to execute on iOS
+                capabilities.setCapability("platformName", "iOS");
                 try {
                     // URL of Appium Server
                     driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
