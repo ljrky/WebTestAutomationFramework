@@ -38,9 +38,7 @@ public class PayPalLoginMobile {
     public void SignInWithPayPalAccount(HashMap<String, String> PayPayAccount) {
         WaitHelper.WaitForSeconds(30);
         WaitHelper.WaitForElement(Email);
-        Email.clear();
         Email.sendKeys(PayPayAccount.get("Email"));
-        Password.clear();
         Password.sendKeys(PayPayAccount.get("Password"));
         Login.click();
         WaitHelper.WaitForElement(PayNow);

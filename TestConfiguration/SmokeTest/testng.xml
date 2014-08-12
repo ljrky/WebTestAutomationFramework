@@ -5,12 +5,7 @@
             <!--<class name="com.testframework.test.Wallet.Premium.BuyPremiumWithCreditCardTest" />-->
             <!--<class name="com.testframework.test.Wallet.Premium.BuyPremiumWithSkypeCreditTest" />-->
             <!--<class name="com.testframework.test.Wallet.Premium.BuyPremiumWithPayPalTest" />-->
-            <!--<class name="com.testframework.test.Wallet.SkypeCreditdit.NewUserWithoutBillingAddressCheckOutTest" />-->
-            <!--<class name="com.testframework.test.Wallet.SkypeCreditdit.CreditCardCheckOutTest" />-->
-            <!--<class name="com.testframework.test.Wallet.SkypeCreditdit.PayPalCheckOutTest" />-->
-            <!--<class name="com.testframework.test.SampleSite.PayPalMobileTest" />-->
-            <!--<class name="com.testframework.test.Wallet.SkypeCredit.BuySkypeCreditWithCreditCardTest" />-->
-            <class name="com.testframework.test.Wallet.SkypeIn.BuySkypeInWithCreditCardTest" />
+            <class name="com.testframework.test.Wallet.SkypeIn.BuySkypeInWithSkypeCreditTest" />
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

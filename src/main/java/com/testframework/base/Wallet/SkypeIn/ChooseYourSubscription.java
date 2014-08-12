@@ -35,8 +35,6 @@ public class ChooseYourSubscription {
         WaitForPageToLoad(driver);
         WaitHelper.WaitForElement(TOS);
         TOS.click();
-        WaitForSeconds(2);
-        TOS.click();
         WaitHelper.WaitForElement(Continue);
         Continue.click();
     }

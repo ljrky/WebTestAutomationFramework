@@ -41,10 +41,10 @@ public class GetSkypeNumber {
         WaitForPageToLoad(driver);
         WaitHelper.WaitForElementEnabled(SelectAreaCode);
         SelectAreaCode();
-        WaitHelper.WaitForElement(FirstSuggestedNumber);
+        WaitHelper.WaitForElementToBeVisibleByID(driver, "lnkSelectNumber0");
         FirstSuggestedNumber.click();
         WaitForPageToLoad(driver);
-        WaitHelper.WaitForElement(DisplayNumber);
+        WaitHelper.WaitForElementToBeVisibleByID(driver, "chkEnableCli");
         DisplayNumber.click();
         WaitForPageToLoad(driver);
         Continue.click();
