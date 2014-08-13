@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -67,6 +68,10 @@ public class SimpleTestCase {
             case "FireFox":
                 System.setProperty(FireFoxProperty, FireFoxDriver);
                 driver = new FirefoxDriver();
+                driver.manage().window().maximize();
+                break;
+            case "Safari":
+                driver = new SafariDriver();
                 driver.manage().window().maximize();
                 break;
             case "Android":
