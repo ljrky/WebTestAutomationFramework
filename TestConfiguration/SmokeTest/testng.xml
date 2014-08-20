@@ -5,7 +5,7 @@
             <!--<class name="com.testframework.test.Wallet.Premium.BuyPremiumWithCreditCardTest" />-->
             <!--<class name="com.testframework.test.Wallet.Premium.BuyPremiumWithSkypeCreditTest" />-->
             <!--<class name="com.testframework.test.Wallet.Premium.BuyPremiumWithPayPalTest" />-->
-            <class name="com.testframework.test.Wallet.SkypeIn.BuySkypeInWithSkypeCreditTest" />
+            <class name="com.testframework.test.SampleSite.BoardTest" />
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

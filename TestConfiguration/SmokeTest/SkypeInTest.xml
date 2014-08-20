@@ -1,8 +1,0 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Suite" parallel="false">
-    <test name="Test">
-        <packages>
-            <package name="com.testframework.test.Wallet.SkypeIn.*" />
-        </packages>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
