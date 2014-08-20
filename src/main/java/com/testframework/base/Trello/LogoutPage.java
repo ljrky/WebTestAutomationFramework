@@ -11,14 +11,11 @@ import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForElementEnabled;
 import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForElementToBeVisible;
 
-/**
- * Created by kerua on 7/9/2014.
- */
 public class LogoutPage {
 
     private WebDriver driver;
 
-   @FindBy(how = How.LINK_TEXT, using = "Log In")
+    @FindBy(how = How.LINK_TEXT, using = "Log In")
     public static WebElement Login;
 
     @FindBy(how = How.LINK_TEXT, using = "Sign Up")

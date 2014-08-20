@@ -13,9 +13,6 @@ import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForEle
 import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForElementEnabled;
 import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForElementToBeVisible;
 
-/**
- * Created by kerua on 7/9/2014.
- */
 public class BoardsPage {
 
     private WebDriver driver;

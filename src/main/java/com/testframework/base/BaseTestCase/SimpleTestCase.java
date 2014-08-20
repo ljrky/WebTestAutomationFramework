@@ -18,13 +18,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getResourceBundle;
-/**
- * Created by kerua on 7/9/2014.
- */
+
 public class SimpleTestCase {
     protected WebDriver driver;
     DesiredCapabilities capabilities;
-    protected String HomePage, Browser, waitForElementTimeout,loginURL, logoutURL, IEProperty, IEDriver, ChromeProperty, ChromeDriver, WPRemoteDriverURL, FireFoxProperty, FireFoxDriver;
+    protected String HomePage, Browser, waitForElementTimeout,loginURL, logoutURL, IEProperty, IEDriver, ChromeProperty, ChromeDriver, FireFoxProperty, FireFoxDriver;
 
     @BeforeClass()
     public void init() {

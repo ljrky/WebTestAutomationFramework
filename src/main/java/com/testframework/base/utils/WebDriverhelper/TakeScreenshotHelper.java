@@ -9,9 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by kerua on 8/6/2014.
- */
 public class TakeScreenshotHelper {
     public static void getScreenShot(WebDriver driver) {
         if (driver instanceof TakesScreenshot) {

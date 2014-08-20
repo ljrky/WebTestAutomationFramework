@@ -7,9 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by kerua on 7/9/2014.
- */
 public class WaitHelper {
     static int numberOfRetry = 10;
     public static int waitForElementTimeout = 30;

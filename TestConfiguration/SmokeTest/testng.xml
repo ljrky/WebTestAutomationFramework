@@ -2,9 +2,6 @@
 <suite name="Suite" parallel="false">
     <test name="Test">
         <classes>
-            <!--<class name="com.testframework.test.Wallet.Premium.BuyPremiumWithCreditCardTest" />-->
-            <!--<class name="com.testframework.test.Wallet.Premium.BuyPremiumWithSkypeCreditTest" />-->
-            <!--<class name="com.testframework.test.Wallet.Premium.BuyPremiumWithPayPalTest" />-->
             <class name="com.testframework.test.SampleSite.BoardTest" />
         </classes>
     </test> <!-- Test -->

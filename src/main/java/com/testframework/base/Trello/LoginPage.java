@@ -12,9 +12,6 @@ import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForElementEnabled;
 import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForElementToBeVisible;
 
-/**
- * Created by kerua on 7/9/2014.
- */
 public class LoginPage {
 
     private WebDriver driver;

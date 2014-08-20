@@ -15,9 +15,6 @@ import java.util.ResourceBundle;
 import static com.testframework.base.Utils.TestDataHelper.GetResourceBundle.getResourceBundle;
 import static com.testframework.base.Utils.WebDriverHelper.WaitHelper.WaitForElement;
 
-/**
-* Created by kerua on 7/9/2014.
-*/
 public class BoardTest extends SimpleTestCase {
 
     public String email, password;
